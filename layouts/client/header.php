@@ -13,21 +13,21 @@ $page = $_GET['page'] ?? 'home';
             </button>
         </div>
         <div class="collapse navbar-collapse py-4 px-5" id="navbarNav">
-            <div class="w-100">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
+            <div class="mx-3">
+                <ul class="navbar-nav ms-auto gap-4">
+                    <li class="nav-item d-block d-lg-flex">
                         <a class="nav-link" href="?page=home">Home</a>
                         <hr class="<?php echo ($page == 'home') ? 'd-block' : 'd-none'; ?> w-50 m-0">
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item d-block d-lg-flex">
                         <a class="nav-link" href="?page=template">Template</a>
                         <hr class="<?php echo ($page == 'template') ? 'd-block' : 'd-none'; ?> w-50 m-0">
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item d-block d-lg-flex">
                         <a class="nav-link" href="?page=my-cv">MyCVs</a>
                         <hr class="<?php echo ($page == 'my-cv') ? 'd-block' : 'd-none'; ?> w-50 m-0">
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item d-block d-lg-flex">
                         <a class="nav-link" href="?page=contact">Contact</a>
                         <hr class="<?php echo ($page == 'contact') ? 'd-block' : 'd-none'; ?> w-50 m-0">
                     </li>
@@ -56,9 +56,9 @@ $page = $_GET['page'] ?? 'home';
                         </li>
                     </ul>
                 </div>
-                <a href="?page=login" class="button button-sign-out d-lg-none">Log out</a>
+                <a href="?page=logout" class="button button-sign-out d-lg-none">Log out</a>
             <?php else: ?>
-                <a href="?page=login" class="button button-sign-up d-none d-lg-block">Sign In</a>
+                <a href="?page=login" class="button button-sign-up">Sign In</a>
             <?php endif; ?>
         </div>
     </nav>
