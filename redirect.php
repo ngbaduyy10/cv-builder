@@ -10,9 +10,8 @@ if (isset($_GET['code'])) {
     $username = $user->name;
     $email = $user->email;
     $image = $user->picture;
-    $password = password_hash("123456", PASSWORD_DEFAULT);
 
-    $result = (new Auth())->googleLogin($email, $username, $image, $password);
+    $result = (new Auth())->googleLogin($email, $username, $image);
     if ($result['success']) {
         header('Location: index.php?page=home');
     } else {

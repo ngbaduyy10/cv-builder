@@ -100,14 +100,13 @@ class Auth extends Database {
         }
     }
 
-    public function googleLogin($email, $username, $image, $password) {
+    public function googleLogin($email, $username, $image) {
         $user = $this->emailCheck($email);
         if (!$user) {
-            $sql = "INSERT INTO user (email, username, password, role, image) VALUES (:email, :username, :password, 'user', :image)";
+            $sql = "INSERT INTO user (email, username, role, image) VALUES (:email, :username, 'user', :image)";
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(':username', $username);
             $stmt->bindParam(':email', $email);
-            $stmt->bindParam(':password', $password);
             $stmt->bindParam(':image', $image);
             if ($stmt->execute()) {
                 $_SESSION['user'] = [

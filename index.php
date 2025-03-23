@@ -1,5 +1,5 @@
 <?php
-$page = isset($_GET['page']) ? $_GET['page'] : 'home';
+$page = $_GET['page'] ?? 'home';
 
 switch ($page) {
     case 'home':
@@ -8,10 +8,6 @@ switch ($page) {
 
     case 'template':
         include './pages/client/template.php';
-        break;
-
-    case 'template-detail':
-        include './pages/client/template-detail.php';
         break;
 
     case 'cv-creation':
