@@ -118,5 +118,9 @@
 }
 
 .auth .social-icons a {
-    font-size: 2.4rem;
+    font-size: 3rem;
+}
+
+.auth .social-icons a i {
+    color: var(--main-color)!important;
 }

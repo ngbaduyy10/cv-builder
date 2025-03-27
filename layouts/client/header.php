@@ -12,7 +12,7 @@ $page = $_GET['page'] ?? 'home';
                 <span class="navbar-toggler-icon"></span>
             </button>
         </div>
-        <div class="collapse navbar-collapse py-4 px-5" id="navbarNav">
+        <div class="collapse navbar-collapse py-3 px-5" id="navbarNav">
             <div class="mx-3">
                 <ul class="navbar-nav ms-auto gap-4">
                     <li class="nav-item d-block d-lg-flex">
