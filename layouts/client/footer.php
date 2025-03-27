@@ -9,16 +9,16 @@
                 </p>
                 <div class="social">
                     <a href="#!">
-                        <img src="assets/logo/twitter.svg" alt="" class="icon" />
+                        <img src="assets/image/twitter.svg" alt="" class="icon" />
                     </a>
                     <a href="#!">
-                        <img src="assets/logo/f.svg" alt="" class="icon" />
+                        <img src="assets/image/f.svg" alt="" class="icon" />
                     </a>
                     <a href="#!">
-                        <img src="assets/logo/linked_in.svg" alt="" class="icon" />
+                        <img src="assets/image/linked_in.svg" alt="" class="icon" />
                     </a>
                     <a href="#!">
-                        <img src="assets/logo/instagram.svg" alt="" class="icon" />
+                        <img src="assets/image/instagram.svg" alt="" class="icon" />
                     </a>
                 </div>
             </div>

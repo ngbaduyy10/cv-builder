@@ -1,0 +1,131 @@
+.template {
+    font-family: "Sen", sans-serif;
+}
+
+.template .filter {
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.template .button-reset {
+    line-height: 28px;
+    width: 30%;
+    font-size: 1.2rem;
+    background: var(--main-color);
+}
+
+.template .filter-title {
+    font-size: 1.8rem;
+    font-weight: 500;
+    line-height: 1.67;
+    color: #171100;
+}
+
+.template .form-check {
+    font-size: 1.4rem;
+    font-family: "Poppins", sans-serif;
+    margin-bottom: 6px!important;
+}
+
+.template .dropdown-btn {
+    font-size: 1.6rem;
+    background-color: transparent;
+    color: black;
+    padding: 5px 15px;
+    border-radius: 10px;
+}
+
+.template .dropdown-btn:hover {
+    background-color: var(--main-color);
+}
+
+.template .dropdown-menu {
+    font-size: 1.4rem;
+    border-radius: 10px;
+}
+
+.template .dropdown-item {
+    padding: 5px 15px;
+}
+
+.template .dropdown-item:hover {
+    background-color: var(--main-color);
+    color: white;
+}
+
+.template .dropdown-item.active {
+    background-color: var(--main-color);
+    color: white;
+}
+
+.template .input-group {
+    position: relative;
+}
+
+.template .input-group .form-control {
+    font-size: 1.6rem;
+    padding: 5px 15px;
+    border-radius: 30px!important;
+    border: 1px solid #6c757d;
+}
+
+.template .input-group .input-group-text {
+    font-size: 1.2rem;
+    padding: 5px;
+    height: 25px;
+    width: 25px;
+    position: absolute;
+    right: 6px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 50%!important;
+    background-color: transparent;
+}
+
+.template .template-list .template-item {
+    position: relative;
+    overflow: hidden;
+    background-color: var(--background-color);
+}
+
+.template .template-list .template-item img:hover {
+    box-shadow: 0 0 16px rgba(0, 0, 0, 0.5);
+}
+
+.template .template-list .template-item .button-use-template {
+    display: none;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 50%;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    line-height: 30px;
+    font-size: 16px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.template .template-list .template-item:hover .button-use-template {
+    display: block;
+}
+
+.template .template-list .template-item .button-use-template:hover {
+    opacity: 1;
+}
+
+.template .template-list .template-item .title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: black;
+}
+
+.template .template-list .template-item .desc {
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: #6c757d;
+    line-height: 1.2;
+    margin: 0;
+}
