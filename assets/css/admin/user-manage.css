@@ -1,13 +1,7 @@
 .admin-user {
-    margin-left: 240px;
-    padding: 20px;
-    transition: all 0.5s ease;
-    font-family: "Sen", sans-serif;
-}
-
-.closed .admin-user {
     margin-left: 70px;
-    transition: all 0.5s ease;
+    padding: 20px;
+    font-family: "Sen", sans-serif;
 }
 
 .admin-user .title {

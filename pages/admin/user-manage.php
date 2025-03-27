@@ -24,7 +24,7 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 </head>
-<body id="admin-content">
+<body id="admin-content" class="closed">
 <?php
 include __DIR__ . '/../../layouts/admin/sidebar.php';
 ?>
