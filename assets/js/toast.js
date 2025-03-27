@@ -7,5 +7,8 @@ export function showToast(type, message) {
         showConfirmButton: false,
         showCloseButton: true,
         timer: 3000,
+        customClass: {
+            popup: 'toast-size',
+        }
     });
 }

@@ -23,9 +23,9 @@
 include __DIR__ . '/../../layouts/client/header.php';
 ?>
 <div class="row auth">
-    <div class="login-container col-xl-7 col-lg-8 col-md-10 col-sm-12">
+    <div class="login-container col-xl-8 col-lg-9 col-11">
         <div class="form-box login row align-items-stretch">
-            <div class="d-none d-sm-block col-6 p-5 welcome">
+            <div class="d-none d-md-block col-6 p-5 welcome">
                 <div class="h-100 d-flex justify-content-center align-items-center">
                     <div>
                         <h1 class="text-white mb-4">Welcome to Bright!</h1>
@@ -35,7 +35,7 @@ include __DIR__ . '/../../layouts/client/header.php';
                     </div>
                 </div>
             </div>
-            <form id="register-form" class="d-flex flex-column align-items-center col-12 col-sm-6 p-5">
+            <form id="register-form" class="d-flex flex-column align-items-center col-12 col-md-6 p-5">
                 <h1>Sign Up</h1>
                 <div class="input-box">
                     <label for="username" class="d-block">Username</label>
