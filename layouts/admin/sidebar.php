@@ -6,13 +6,13 @@
     <hr class="sidebar-hr" />
     <ul class="sidebar-list d-flex flex-column gap-1">
         <li>
-            <a href="?page=user-manage" class="p-3 <?php echo ($_GET['page'] == "user-manage") ? 'active' : ''; ?>">
+            <a href="?page=user-manage" class="py-3 px-4 <?php echo ($_GET['page'] == "user-manage") ? 'active' : ''; ?>">
                 <i class="bx bx-user"></i>
                 <span class="links-name">User</span>
             </a>
         </li>
         <li>
-            <a href="?page=template-manage" class="py-2 px-3 <?php echo ($_GET['page'] == "template-manage") ? 'active' : ''; ?>">
+            <a href="?page=template-manage" class="py-3 px-4 <?php echo ($_GET['page'] == "template-manage") ? 'active' : ''; ?>">
                 <i class='bx bx-book-bookmark'></i>
                 <span class="links-name">Template</span>
             </a>

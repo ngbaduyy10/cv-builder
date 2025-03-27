@@ -4,7 +4,7 @@
     align-items: center;
     height: calc(100vh - 80px);
     background: linear-gradient(90deg, #e2e2e2, #f4f7ff);
-    font-family: "Poppins", sans-serif!important;
+    font-family: "Sen", sans-serif!important;
     margin: 0!important;
 }
 
@@ -118,7 +118,7 @@
 }
 
 .auth .social-icons a {
-    font-size: 3rem;
+    font-size: 2.8rem;
 }
 
 .auth .social-icons a i {
