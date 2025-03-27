@@ -29,7 +29,7 @@
 include __DIR__ . '/../../layouts/admin/sidebar.php';
 ?>
 <div class="admin-user">
-    <div class="title">USER MANAGEMENT</div>
+    <div class="title d-none d-sm-block">USER MANAGEMENT</div>
     <div class="header_fixed mt-4">
         <table>
             <thead>
@@ -55,6 +55,7 @@ include __DIR__ . '/../../layouts/admin/sidebar.php';
 <!--SweetAlert2-->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
 
-<script src="assets/js/admin.js"></script>
+<script src="assets/js/admin/admin.js"></script>
+<script src="assets/js/admin/user-manage.js"></script>
 </body>
 </html>

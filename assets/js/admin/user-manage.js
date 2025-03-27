@@ -1,8 +1,4 @@
 $(document).ready(function() {
-    $("#btn-menu").click(function () {
-        $("#admin-content").toggleClass("closed");
-    });
-
     function load_users() {
         $.ajax({
             url: "/cv-builder/api/user.api.php",

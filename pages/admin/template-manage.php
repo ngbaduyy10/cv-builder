@@ -28,7 +28,16 @@
 <?php
 include __DIR__ . '/../../layouts/admin/sidebar.php';
 ?>
-<div class="admin-template">Template</div>
+<div class="admin-template">
+    <div class="d-flex justify-content-between align-items-center">
+        <div class="title d-none d-sm-block">TEMPLATE MANAGEMENT</div>
+        <a href="#" class="button button-create">
+            <i class='bx bx-plus'></i>
+            New Template
+        </a>
+    </div>
+    <div id="template-list" class="template-list mt-4 course-list row g-4 align-items-stretch"></div>
+</div>
 <!--jQuery-->
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
@@ -38,6 +47,7 @@ include __DIR__ . '/../../layouts/admin/sidebar.php';
 <!--SweetAlert2-->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
 
-<script src="assets/js/admin.js"></script>
+<script src="assets/js/admin/admin.js"></script>
+<script src="assets/js/admin/template-manage.js"></script>
 </body>
 </html>

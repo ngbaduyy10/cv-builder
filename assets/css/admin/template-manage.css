@@ -3,3 +3,86 @@
     padding: 20px;
     font-family: "Sen", sans-serif;
 }
+
+.admin-template .title {
+    font-size: 2.6rem;
+    font-weight: 600;
+}
+
+.admin-template .button-create {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 10px;
+    border-radius: 10px;
+    line-height: 0;
+    background-color: var(--main-color);
+}
+
+.admin-template .template-list .template-item {
+    position: relative;
+    overflow: hidden;
+    background-color: var(--background-color);
+}
+
+.admin-template .template-list .template-item img:hover {
+    box-shadow: 0 0 16px rgba(0, 0, 0, 0.5);
+}
+
+.admin-template .template-list .template-item .button-edit {
+    display: none;
+    position: absolute;
+    top: 40%;
+    left: 42%;
+    transform: translate(-50%, -50%);
+    opacity: 50%;
+    color: white;
+    background-color: blue;
+    border: none;
+    border-radius: 10px;
+    transition: background-color 0.3s;
+}
+
+.admin-template .template-list .template-item:hover .button-edit {
+    display: block;
+}
+
+.admin-template .template-list .template-item .button-edit:hover {
+    opacity: 1;
+}
+
+.admin-template .template-list .template-item .button-delete {
+    display: none;
+    position: absolute;
+    top: 40%;
+    left: 58%;
+    transform: translate(-50%, -50%);
+    opacity: 50%;
+    color: white;
+    background-color: red;
+    border: none;
+    border-radius: 10px;
+    transition: background-color 0.3s;
+}
+
+.admin-template .template-list .template-item:hover .button-delete {
+    display: block;
+}
+
+.admin-template .template-list .template-item .button-delete:hover {
+    opacity: 1;
+}
+
+.admin-template .template-list .template-item .title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: black;
+}
+
+.admin-template .template-list .template-item .desc {
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: #6c757d;
+    line-height: 1.2;
+    margin: 0;
+}
