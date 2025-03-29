@@ -14,7 +14,7 @@ $(document).ready(function () {
                             <div class="col-12 col-md-6 col-xl-4">
                                 <div class="template-item p-4 h-100 d-flex flex-column">
                                     <img src="${template.preview_image}" alt="" class="w-100" />
-                                    <a href="#" class="button button-use-template">Use Template</a>
+                                    <a href="?page=cv-creation&id=${template.id}" class="button button-use-template">Use Template</a>
                                     <div class="mt-3">
                                         <h3 class="title">${template.name}</h3>
                                         <p class="desc">${template.description}</p>
