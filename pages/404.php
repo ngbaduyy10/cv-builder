@@ -21,7 +21,7 @@
     <div class="row align-items-center">
         <!-- Text Section -->
         <div class="col-lg-6 text-center text-lg-start mb-4 mb-lg-0">
-            <h1 class="display-3 text-danger fw-bold">Oops!</h1>
+            <h1 class="text-danger fw-bold">Oops!</h1>
             <h2 class="text-dark mb-3">The page you are looking for cannot be found</h2>
             <ul class="text-muted list-unstyled">
                 <li>The URL may have been typed incorrectly.</li>
