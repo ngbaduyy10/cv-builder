@@ -34,12 +34,12 @@ include __DIR__ . '/../../layouts/client/header.php';
                     <div class = "cv-form-row cv-form-row-about">
                         <div class = "form-elem">
                             <label for = "" class = "form-label">First Name</label>
-                            <input name = "firstname" type = "text" class = "form-control firstname" id = "" onkeyup="" placeholder="e.g. John">
+                            <input name = "firstname" type = "text" class = "form-control firstname" id = "" onchange="generateCV()" placeholder="e.g. John">
                             <span class="form-text"></span>
                         </div>
                         <div class = "form-elem">
                             <label for = "" class = "form-label">Last Name</label>
-                            <input name = "lastname" type = "text" class = "form-control lastname" id = "" onkeyup="" placeholder="e.g. Doe">
+                            <input name = "lastname" type = "text" class = "form-control lastname" id = "" onchange="generateCV()" placeholder="e.g. Doe">
                             <span class="form-text"></span>
                         </div>
                         <div class = "form-elem">
@@ -48,22 +48,22 @@ include __DIR__ . '/../../layouts/client/header.php';
                         </div>
                         <div class = "form-elem">
                             <label for = "" class = "form-label">Address</label>
-                            <input name = "address" type = "text" class = "form-control address" id = "" onkeyup="" placeholder="e.g. Lake Street-23">
+                            <input name = "address" type = "text" class = "form-control address" id = "" onchange="generateCV()" placeholder="e.g. Lake Street-23">
                             <span class="form-text"></span>
                         </div>
                         <div class = "form-elem">
                             <label for = "" class = "form-label">Email</label>
-                            <input name = "email" type = "text" class = "form-control email" id = "" onkeyup="" placeholder="e.g. johndoe@gmail.com">
+                            <input name = "email" type = "text" class = "form-control email" id = "" onchange="generateCV()" placeholder="e.g. johndoe@gmail.com">
                             <span class="form-text"></span>
                         </div>
                         <div class = "form-elem">
                             <label for = "" class = "form-label">Phone</label>
-                            <input name = "phoneno" type = "text" class = "form-control phoneno" id = "" onkeyup="" placeholder="e.g. 456-768-798, 567.654.002">
+                            <input name = "phoneno" type = "text" class = "form-control phoneno" id = "" onchange="generateCV()" placeholder="e.g. 456-768-798, 567.654.002">
                             <span class="form-text"></span>
                         </div>
                         <div class = "form-elem">
                             <label for = "" class = "form-label">Summary</label>
-                            <textarea name = "summary" class = "form-control summary" id = "" onkeyup="" rows="4"></textarea>
+                            <textarea name = "summary" class = "form-control summary" id = "" onchange="generateCV()" rows="4"></textarea>
                             <span class="form-text"></span>
                         </div>
                     </div>
@@ -81,12 +81,12 @@ include __DIR__ . '/../../layouts/client/header.php';
                                     <div class = "cols-2">
                                         <div class = "form-elem">
                                             <label for = "" class = "form-label">Title</label>
-                                            <input name = "achieve_title" type = "text" class = "form-control achieve_title" id = "" onkeyup="">
+                                            <input name = "achieve_title" type = "text" class = "form-control achieve_title" id = "" onchange="generateCV()">
                                             <span class="form-text"></span>
                                         </div>
                                         <div class = "form-elem">
                                             <label for = "" class = "form-label">Description</label>
-                                            <textarea name = "achieve_description" class = "form-control achieve_description" rows="4" id = "" onkeyup=""></textarea>
+                                            <textarea name = "achieve_description" class = "form-control achieve_description" rows="4" id = "" onchange="generateCV()"></textarea>
                                             <span class="form-text"></span>
                                         </div>
                                     </div>
@@ -109,27 +109,27 @@ include __DIR__ . '/../../layouts/client/header.php';
                                 <div class = "cv-form-row cv-form-row-experience">
                                     <div class = "form-elem">
                                         <label for = "" class = "form-label">Title</label>
-                                        <input name = "exp_title" type = "text" class = "form-control exp_title" id = "" onkeyup="">
+                                        <input name = "exp_title" type = "text" class = "form-control exp_title" id = "" onchange="generateCV()">
                                         <span class="form-text"></span>
                                     </div>
                                     <div class = "form-elem">
                                         <label for = "" class = "form-label">Company / Organization</label>
-                                        <input name = "exp_organization" type = "text" class = "form-control exp_organization" id = "" onkeyup="">
+                                        <input name = "exp_organization" type = "text" class = "form-control exp_organization" id = "" onchange="generateCV()">
                                         <span class="form-text"></span>
                                     </div>
                                     <div class = "form-elem">
                                         <label for = "" class = "form-label">Start Date</label>
-                                        <input name = "exp_start_date" type = "month" class = "form-control exp_start_date" id = "" onkeyup="">
+                                        <input name = "exp_start_date" type = "month" class = "form-control exp_start_date" id = "" onchange="generateCV()">
                                         <span class="form-text"></span>
                                     </div>
                                     <div class = "form-elem">
                                         <label for = "" class = "form-label">End Date</label>
-                                        <input name = "exp_end_date" type = "month" class = "form-control exp_end_date" id = "" onkeyup="">
+                                        <input name = "exp_end_date" type = "month" class = "form-control exp_end_date" id = "" onchange="generateCV()">
                                         <span class="form-text"></span>
                                     </div>
                                     <div class = "form-elem">
                                         <label for = "" class = "form-label">Description</label>
-                                        <textarea name = "exp_description" class = "form-control exp_description" rows="4" id = "" onkeyup=""></textarea>
+                                        <textarea name = "exp_description" class = "form-control exp_description" rows="4" id = "" onchange="generateCV()"></textarea>
                                         <span class="form-text"></span>
                                     </div>
 
@@ -152,22 +152,22 @@ include __DIR__ . '/../../layouts/client/header.php';
                                 <div class = "cv-form-row cv-form-row-experience">
                                     <div class = "form-elem">
                                         <label for = "" class = "form-label">School</label>
-                                        <input name = "edu_school" type = "text" class = "form-control edu_school" id = "" onkeyup="">
+                                        <input name = "edu_school" type = "text" class = "form-control edu_school" id = "" onchange="generateCV()">
                                         <span class="form-text"></span>
                                     </div>
                                     <div class = "form-elem">
                                         <label for = "" class = "form-label">Degree</label>
-                                        <input name = "edu_degree" type = "text" class = "form-control edu_degree" id = "" onkeyup="">
+                                        <input name = "edu_degree" type = "text" class = "form-control edu_degree" id = "" onchange="generateCV()">
                                         <span class="form-text"></span>
                                     </div>
                                     <div class = "form-elem">
                                         <label for = "" class = "form-label">Start Date</label>
-                                        <input name = "edu_start_date" type = "month" class = "form-control edu_start_date" id = "" onkeyup="">
+                                        <input name = "edu_start_date" type = "month" class = "form-control edu_start_date" id = "" onchange="generateCV()">
                                         <span class="form-text"></span>
                                     </div>
                                     <div class = "form-elem">
                                         <label for = "" class = "form-label">End Date</label>
-                                        <input name = "edu_graduation_date" type = "month" class = "form-control edu_graduation_date" id = "" onkeyup="">
+                                        <input name = "edu_graduation_date" type = "month" class = "form-control edu_graduation_date" id = "" onchange="generateCV()">
                                         <span class="form-text"></span>
                                     </div>
                                     <button data-repeater-delete type = "button" class = "repeater-remove-btn">-</button>
@@ -189,12 +189,12 @@ include __DIR__ . '/../../layouts/client/header.php';
                                 <div class = "cv-form-row cv-form-row-experience">
                                     <div class = "form-elem">
                                         <label for = "" class = "form-label">Project Name</label>
-                                        <input name = "proj_title" type = "text" class = "form-control proj_title" id = "" onkeyup="">
+                                        <input name = "proj_title" type = "text" class = "form-control proj_title" id = "" onchange="generateCV()">
                                         <span class="form-text"></span>
                                     </div>
                                     <div class = "form-elem">
                                         <label for = "" class = "form-label">Description</label>
-                                        <textarea name = "proj_description" class = "form-control proj_description" rows="4" id = "" onkeyup=""></textarea>
+                                        <textarea name = "proj_description" class = "form-control proj_description" rows="4" id = "" onchange="generateCV()"></textarea>
                                         <span class="form-text"></span>
                                     </div>
                                     <button data-repeater-delete type = "button" class = "repeater-remove-btn">-</button>
@@ -216,7 +216,7 @@ include __DIR__ . '/../../layouts/client/header.php';
                                 <div class = "cv-form-row cv-form-row-skills">
                                     <div class = "form-elem">
                                         <label for = "" class = "form-label">Skill</label>
-                                        <input name = "skill" type = "text" class = "form-control skill" id = "" onkeyup="">
+                                        <input name = "skill" type = "text" class = "form-control skill" id = "" onchange="generateCV()">
                                         <span class="form-text"></span>
                                     </div>
 
