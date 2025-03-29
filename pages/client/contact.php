@@ -26,7 +26,7 @@ include __DIR__ . '/../../layouts/client/header.php';
     <div class="row g-4 align-items-center">
         <!-- Form liên hệ -->
         <div class="col-lg-5">
-            <div class="contact-form bg-dark text-white p-5 rounded-3 shadow-lg">
+            <div class="contact-form text-white p-5 rounded-3 shadow-lg">
                 <h2 class="fw-bold mb-2">Get In Touch</h2>
                 <p class="text-white mb-4">Call or email us regarding question or issues</p>
                 <form>
