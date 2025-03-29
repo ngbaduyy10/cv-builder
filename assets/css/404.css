@@ -1,0 +1,33 @@
+body {
+    font-family: 'Sen', sans-serif!important;
+    background-color: #f5f7fa;
+    color: #333;
+}
+
+.not-found {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.not-found h1 {
+    font-size: 70px;
+}
+
+.not-found h2 {
+    font-size: 26px;
+    font-weight: 600;
+}
+
+.list-unstyled li {
+    font-size: 16px;
+}
+
+.button-primary {
+    background-color: var(--main-color);
+    line-height: 30px;
+    padding: 5px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}
