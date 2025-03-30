@@ -1,16 +1,4 @@
-const strRegex =  /^[a-zA-Z\s]*$/;
-const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-const phoneRegex = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
-
 const mainForm = document.getElementById('cv-form');
-const validType = {
-    TEXT: 'text',
-    TEXT_EMP: 'text_emp',
-    EMAIL: 'email',
-    DIGIT: 'digit',
-    PHONENO: 'phoneno',
-    ANY: 'any',
-}
 
 // user inputs elements
 let firstnameElem = mainForm.firstname,
@@ -34,19 +22,28 @@ let nameDsp = document.getElementById('fullname_dsp'),
     educationsDsp = document.getElementById('educations_dsp'),
     experiencesDsp = document.getElementById('experiences_dsp');
 
+function formatDate(dateString) {
+    const date = new Date(dateString);
+    const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    const month = months[date.getMonth()];
+    const year = date.getFullYear();
+    return `${month} ${year}`;
+}
+
 // first value is for the attributes and second one passes the nodelists
 const fetchValues = (attrs, ...nodeLists) => {
     let elemsAttrsCount = nodeLists.length;
     let elemsDataCount = nodeLists[0].length;
     let tempDataArr = [];
 
-    // first loop deals with the no of repeaters value
     for(let i = 0; i < elemsDataCount; i++){
-        let dataObj = {}; // creating an empty object to fill the data
-        // second loop fetches the data for each repeaters value or attributes
-        for(let j = 0; j < elemsAttrsCount; j++){
-            // setting the key name for the object and fill it with data
-            dataObj[`${attrs[j]}`] = nodeLists[j][i].value;
+        let dataObj = {};
+        for(let j = 0; j < elemsAttrsCount; j++) {
+            if(attrs[j].includes('date') && nodeLists[j][i].value){
+                dataObj[`${attrs[j]}`] = formatDate(nodeLists[j][i].value);
+            } else {
+                dataObj[`${attrs[j]}`] = nodeLists[j][i].value;
+            }
         }
         tempDataArr.push(dataObj);
     }
@@ -55,7 +52,7 @@ const fetchValues = (attrs, ...nodeLists) => {
 }
 
 const getUserInput = () => {
-    // achivements
+    // achievements
     let achievementsTitleElem = document.querySelectorAll('.achieve_title'),
         achievementsDescriptionElem = document.querySelectorAll('.achieve_description');
 
@@ -85,14 +82,61 @@ const getUserInput = () => {
         phoneno: phonenoElem.value,
         summary: summaryElem.value,
         achievements: fetchValues(['achieve_title', 'achieve_description'], achievementsTitleElem, achievementsDescriptionElem),
-        experiences: fetchValues(['exp_title', 'exp_organization', 'exp_start_date', 'exp_end_date', 'exp_description'], expTitleElem, expOrganizationElem, expStartDateElem, expEndDateElem, expDescriptionElem),
-        educations: fetchValues(['edu_school', 'edu_degree', 'edu_start_date', 'edu_graduation_date'], eduSchoolElem, eduDegreeElem, eduStartDateElem, eduGraduationDateElem),
+        experiences: fetchValues(['exp_title', 'exp_start_date', 'exp_end_date','exp_organization', 'exp_description'], expTitleElem, expStartDateElem, expEndDateElem, expOrganizationElem, expDescriptionElem),
+        educations: fetchValues(['edu_school', 'edu_start_date', 'edu_graduation_date', 'edu_degree'], eduSchoolElem, eduStartDateElem, eduGraduationDateElem, eduDegreeElem),
         projects: fetchValues(['proj_title', 'proj_description'], projTitleElem, projDescriptionElem),
         skills: fetchValues(['skill'], skillElem)
     }
 }
 
+// show the list data
+const showListData = (listData, listContainer) => {
+    listContainer.innerHTML = "";
+    listData.forEach(listItem => {
+        let itemElem = document.createElement('div');
+        itemElem.classList.add('preview-item');
+
+        for(const key in listItem){
+            let subItemElem = document.createElement('span');
+            subItemElem.classList.add('preview-item-val');
+            if (key.includes('start_date') && listItem[key]) {
+                subItemElem.innerHTML = `${listItem[key]} - `;
+            } else {
+                subItemElem.innerHTML = `${listItem[key]}`;
+            }
+            itemElem.appendChild(subItemElem);
+        }
+
+        listContainer.appendChild(itemElem);
+    })
+}
+
+const displayCV = (userData) => {
+    nameDsp.innerHTML = userData.firstname + " " + userData.lastname;
+    phonenoDsp.innerHTML = userData.phoneno;
+    emailDsp.innerHTML = userData.email;
+    addressDsp.innerHTML = userData.address;
+    summaryDsp.innerHTML = userData.summary;
+    showListData(userData.projects, projectsDsp);
+    showListData(userData.achievements, achievementsDsp);
+    showListData(userData.skills, skillsDsp);
+    showListData(userData.educations, educationsDsp);
+    showListData(userData.experiences, experiencesDsp);
+}
+
 const generateCV = () => {
     const userData = getUserInput();
-    console.log(userData);
+    displayCV(userData);
+}
+
+function previewImage(){
+    let oFReader = new FileReader();
+    oFReader.readAsDataURL(imageElem.files[0]);
+    oFReader.onload = function(ofEvent){
+        imageDsp.src = ofEvent.target.result;
+    }
+}
+
+const printCV = () => {
+    window.print();
 }

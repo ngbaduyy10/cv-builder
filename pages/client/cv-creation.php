@@ -25,6 +25,14 @@ include __DIR__ . '/../../layouts/client/header.php';
 
 <main class="cv-creation">
     <div class="container row gx-4">
+        <div class="col-12 d-flex justify-content-end gap-3">
+            <button class="button button-save d-flex align-items-center gap-2">
+                <i class='bx bxs-save'></i> Save
+            </button>
+            <button class="button button-print d-flex align-items-center gap-2" onclick="printCV()">
+                <i class='bx bxs-printer'></i> Print
+            </button>
+        </div>
         <section id="about-sc" class="col-12 col-lg-6">
             <form action="" class="cv-form" id = "cv-form">
                 <div class = "cv-form-blk">
@@ -44,7 +52,7 @@ include __DIR__ . '/../../layouts/client/header.php';
                         </div>
                         <div class = "form-elem">
                             <label for = "" class = "form-label">Image</label>
-                            <input name = "image" type = "file" class = "form-control image" id = "" accept = "image/*" onchange="">
+                            <input name = "image" type = "file" class = "form-control image" id = "" accept = "image/*" onchange="previewImage()">
                         </div>
                         <div class = "form-elem">
                             <label for = "" class = "form-label">Address</label>
@@ -62,7 +70,7 @@ include __DIR__ . '/../../layouts/client/header.php';
                             <span class="form-text"></span>
                         </div>
                         <div class = "form-elem">
-                            <label for = "" class = "form-label">Summary</label>
+                            <label for = "" class = "form-label">Objectives</label>
                             <textarea name = "summary" class = "form-control summary" id = "" onchange="generateCV()" rows="4"></textarea>
                             <span class="form-text"></span>
                         </div>
@@ -119,12 +127,12 @@ include __DIR__ . '/../../layouts/client/header.php';
                                     </div>
                                     <div class = "form-elem">
                                         <label for = "" class = "form-label">Start Date</label>
-                                        <input name = "exp_start_date" type = "month" class = "form-control exp_start_date" id = "" onchange="generateCV()">
+                                        <input name = "exp_start_date" type = "date" class = "form-control exp_start_date" id = "" onchange="generateCV()">
                                         <span class="form-text"></span>
                                     </div>
                                     <div class = "form-elem">
                                         <label for = "" class = "form-label">End Date</label>
-                                        <input name = "exp_end_date" type = "month" class = "form-control exp_end_date" id = "" onchange="generateCV()">
+                                        <input name = "exp_end_date" type = "date" class = "form-control exp_end_date" id = "" onchange="generateCV()">
                                         <span class="form-text"></span>
                                     </div>
                                     <div class = "form-elem">
@@ -162,12 +170,12 @@ include __DIR__ . '/../../layouts/client/header.php';
                                     </div>
                                     <div class = "form-elem">
                                         <label for = "" class = "form-label">Start Date</label>
-                                        <input name = "edu_start_date" type = "month" class = "form-control edu_start_date" id = "" onchange="generateCV()">
+                                        <input name = "edu_start_date" type = "date" class = "form-control edu_start_date" id = "" onchange="generateCV()">
                                         <span class="form-text"></span>
                                     </div>
                                     <div class = "form-elem">
                                         <label for = "" class = "form-label">End Date</label>
-                                        <input name = "edu_graduation_date" type = "month" class = "form-control edu_graduation_date" id = "" onchange="generateCV()">
+                                        <input name = "edu_graduation_date" type = "date" class = "form-control edu_graduation_date" id = "" onchange="generateCV()">
                                         <span class="form-text"></span>
                                     </div>
                                     <button data-repeater-delete type = "button" class = "repeater-remove-btn">-</button>
@@ -232,7 +240,7 @@ include __DIR__ . '/../../layouts/client/header.php';
 
         <section id = "preview-sc" class = "print_area col-12 col-lg-6">
             <div class = "preview-cnt">
-                <div class = "preview-cnt-l bg-green text-white">
+                <div class = "preview-cnt-l text-black">
                     <div class = "preview-blk">
                         <div class = "preview-image">
                             <img src = "" alt = "" id = "image_dsp">
@@ -240,14 +248,11 @@ include __DIR__ . '/../../layouts/client/header.php';
                         <div class = "preview-item preview-item-name">
                             <span class = "preview-item-val fw-6" id = "fullname_dsp"></span>
                         </div>
-                        <div class = "preview-item">
-                            <span class = "preview-item-val text-uppercase fw-6 ls-1" id = "designation_dsp"></span>
-                        </div>
                     </div>
 
                     <div class = "preview-blk">
                         <div class = "preview-blk-title">
-                            <h3>about</h3>
+                            <h3>Information</h3>
                         </div>
                         <div class = "preview-blk-list">
                             <div class = "preview-item">
@@ -259,9 +264,15 @@ include __DIR__ . '/../../layouts/client/header.php';
                             <div class = "preview-item">
                                 <span class = "preview-item-val" id = "address_dsp"></span>
                             </div>
-                            <div class = "preview-item">
-                                <span class = "preview-item-val" id = "summary_dsp"></span>
-                            </div>
+                        </div>
+                    </div>
+
+                    <div class = "preview-blk">
+                        <div class = "preview-blk-title">
+                            <h3>Objectives</h3>
+                        </div>
+                        <div class = "preview-item preview-item-objective">
+                            <span class = "preview-item-val" id = "summary_dsp"></span>
                         </div>
                     </div>
 
@@ -276,13 +287,6 @@ include __DIR__ . '/../../layouts/client/header.php';
                 </div>
 
                 <div class = "preview-cnt-r bg-white">
-                    <div class = "preview-blk">
-                        <div class = "preview-blk-title">
-                            <h3>Achievements</h3>
-                        </div>
-                        <div class = "achievements-items preview-blk-list" id = "achievements_dsp"></div>
-                    </div>
-
                     <div class = "preview-blk">
                         <div class = "preview-blk-title">
                             <h3>educations</h3>
@@ -302,6 +306,13 @@ include __DIR__ . '/../../layouts/client/header.php';
                             <h3>projects</h3>
                         </div>
                         <div class = "projects-items preview-blk-list" id = "projects_dsp"></div>
+                    </div>
+
+                    <div class = "preview-blk">
+                        <div class = "preview-blk-title">
+                            <h3>Achievements</h3>
+                        </div>
+                        <div class = "achievements-items preview-blk-list" id = "achievements_dsp"></div>
                     </div>
                 </div>
             </div>
