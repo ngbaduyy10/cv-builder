@@ -26,7 +26,7 @@ include __DIR__ . '/../../layouts/client/header.php';
     <div class="row g-4 align-items-center">
         <!-- Form liên hệ -->
         <div class="col-lg-5">
-            <div class="contact-form text-white p-5 rounded-3 shadow-lg">
+            <div class="contact-form text-white p-5 shadow-lg">
                 <h2 class="fw-bold mb-2">Get In Touch</h2>
                 <p class="text-white mb-4">Call or email us regarding question or issues</p>
                 <form>
@@ -39,7 +39,7 @@ include __DIR__ . '/../../layouts/client/header.php';
                     <div class="mb-4">
                         <textarea id="message" class="form-control form-control-lg bg-transparent text-white border-0 border-bottom rounded-0" rows="3" placeholder="Your Message" required></textarea>
                     </div>
-                    <button type="submit" class="btn btn-light btn-lg w-100 fw-bold text-dark rounded-3">SEND</button>
+                    <button type="submit" class="btn btn-light btn-lg w-100 fw-bold text-dark">SEND</button>
                 </form>
                 <!-- Social Links for Mobile -->
                 <div class="social-links-mobile d-flex justify-content-center gap-4 mt-4">

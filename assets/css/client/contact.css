@@ -6,6 +6,7 @@ body {
 /* Contact Form */
 .contact-form {
     background-color: var(--main-color)!important;
+    border-radius: 10px;
 }
 
 .contact-form h2 {
@@ -44,6 +45,7 @@ body {
 .contact-form .btn-light {
     background-color: #fff;
     border: none;
+    border-radius: 10px;
     padding: 0.75rem;
     font-size: 1.4rem;
     transition: background-color 0.3s ease;
@@ -82,14 +84,15 @@ body {
 
 /* Map */
 .map-container {
-    height: 500px;
+    height: 600px;
     width: 100%;
+    border-radius: 10px;
 }
 
 /* Responsive */
 @media (max-width: 992px) {
     .map-container {
-        height: 400px;
+        height: 500px;
     }
     .contact-form {
         padding: 2rem;
@@ -98,7 +101,7 @@ body {
 
 @media (max-width: 576px) {
     .map-container {
-        height: 300px;
+        height: 400px;
     }
     .contact-form h2 {
         font-size: 2rem;
