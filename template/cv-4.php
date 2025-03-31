@@ -21,8 +21,8 @@
                     <h3>Details</h3>
                 </div>
                 <div class = "preview-blk-list">
-                    <div class="detail-title">Phone</div>
                     <div class = "preview-item">
+                        <div class="detail-title">Phone</div>
                         <span class = "preview-item-val" id = "phoneno_dsp"></span>
                     </div>
                     <div class = "preview-item">
