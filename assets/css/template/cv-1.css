@@ -3,7 +3,7 @@
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     font-family: "Poppins", sans-serif;
-    padding: 4rem 3rem;
+    padding: 4.2rem 3rem;
 }
 
 .preview-cnt hr {
@@ -14,7 +14,7 @@
 .preview-item.preview-item-name {
     font-size: 2rem;
     font-weight: 600;
-    margin-top: 1rem;
+    margin-top: 0;
     margin-bottom: 0;
     position: relative;
 }
@@ -51,6 +51,10 @@
 .preview-item {
     font-size: 0.9rem;
     margin-bottom: 0.6rem;
+}
+
+.skills-items .preview-item {
+    margin-bottom: 0.2rem;
 }
 
 .achievements-items.preview-blk-list .preview-item span:first-child {
