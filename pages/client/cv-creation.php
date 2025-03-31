@@ -12,6 +12,7 @@
     />
     <link rel="stylesheet" href="assets/css/client/layout.css" />
     <link rel="stylesheet" href="assets/css/client/cv-creation.css" />
+    <link rel="stylesheet" href="assets/css/template/cv-4.css" />
     <title>CV Creation</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -55,8 +56,13 @@ include __DIR__ . '/../../layouts/client/header.php';
                             <input name = "image" type = "file" class = "form-control image" id = "" accept = "image/*" onchange="previewImage()">
                         </div>
                         <div class = "form-elem">
+                            <label for = "" class = "form-label">Job</label>
+                            <input name = "job" type = "text" class = "form-control job" id = "" onchange="generateCV()" placeholder="e.g. Fresher">
+                            <span class="form-text"></span>
+                        </div>
+                        <div class = "form-elem">
                             <label for = "" class = "form-label">Address</label>
-                            <input name = "address" type = "text" class = "form-control address" id = "" onchange="generateCV()" placeholder="e.g. Lake Street-23">
+                            <input name = "address" type = "text" class = "form-control address" id = "" onchange="generateCV()" placeholder="e.g. 23 Lake Street">
                             <span class="form-text"></span>
                         </div>
                         <div class = "form-elem">
@@ -66,12 +72,12 @@ include __DIR__ . '/../../layouts/client/header.php';
                         </div>
                         <div class = "form-elem">
                             <label for = "" class = "form-label">Phone</label>
-                            <input name = "phoneno" type = "text" class = "form-control phoneno" id = "" onchange="generateCV()" placeholder="e.g. 456-768-798, 567.654.002">
+                            <input name = "phoneno" type = "text" class = "form-control phoneno" id = "" onchange="generateCV()" placeholder="e.g. 0827872272">
                             <span class="form-text"></span>
                         </div>
                         <div class = "form-elem">
                             <label for = "" class = "form-label">Objectives</label>
-                            <textarea name = "summary" class = "form-control summary" id = "" onchange="generateCV()" rows="4"></textarea>
+                            <textarea name = "summary" class = "form-control summary" id = "" onchange="generateCV()" rows="6"></textarea>
                             <span class="form-text"></span>
                         </div>
                     </div>
@@ -94,7 +100,7 @@ include __DIR__ . '/../../layouts/client/header.php';
                                         </div>
                                         <div class = "form-elem">
                                             <label for = "" class = "form-label">Description</label>
-                                            <textarea name = "achieve_description" class = "form-control achieve_description" rows="4" id = "" onchange="generateCV()"></textarea>
+                                            <textarea name = "achieve_description" class = "form-control achieve_description" rows="3" id = "" onchange="generateCV()"></textarea>
                                             <span class="form-text"></span>
                                         </div>
                                     </div>
@@ -137,7 +143,7 @@ include __DIR__ . '/../../layouts/client/header.php';
                                     </div>
                                     <div class = "form-elem">
                                         <label for = "" class = "form-label">Description</label>
-                                        <textarea name = "exp_description" class = "form-control exp_description" rows="4" id = "" onchange="generateCV()"></textarea>
+                                        <textarea name = "exp_description" class = "form-control exp_description" rows="6" id = "" onchange="generateCV()"></textarea>
                                         <span class="form-text"></span>
                                     </div>
 
@@ -202,7 +208,7 @@ include __DIR__ . '/../../layouts/client/header.php';
                                     </div>
                                     <div class = "form-elem">
                                         <label for = "" class = "form-label">Description</label>
-                                        <textarea name = "proj_description" class = "form-control proj_description" rows="4" id = "" onchange="generateCV()"></textarea>
+                                        <textarea name = "proj_description" class = "form-control proj_description" rows="6" id = "" onchange="generateCV()"></textarea>
                                         <span class="form-text"></span>
                                     </div>
                                     <button data-repeater-delete type = "button" class = "repeater-remove-btn">-</button>
@@ -239,83 +245,9 @@ include __DIR__ . '/../../layouts/client/header.php';
         </section>
 
         <section id = "preview-sc" class = "print_area col-12 col-lg-6">
-            <div class = "preview-cnt">
-                <div class = "preview-cnt-l text-black">
-                    <div class = "preview-blk">
-                        <div class = "preview-image">
-                            <img src = "" alt = "" id = "image_dsp">
-                        </div>
-                        <div class = "preview-item preview-item-name">
-                            <span class = "preview-item-val fw-6" id = "fullname_dsp"></span>
-                        </div>
-                    </div>
-
-                    <div class = "preview-blk">
-                        <div class = "preview-blk-title">
-                            <h3>Information</h3>
-                        </div>
-                        <div class = "preview-blk-list">
-                            <div class = "preview-item">
-                                <span class = "preview-item-val" id = "phoneno_dsp"></span>
-                            </div>
-                            <div class = "preview-item">
-                                <span class = "preview-item-val" id = "email_dsp"></span>
-                            </div>
-                            <div class = "preview-item">
-                                <span class = "preview-item-val" id = "address_dsp"></span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class = "preview-blk">
-                        <div class = "preview-blk-title">
-                            <h3>Objectives</h3>
-                        </div>
-                        <div class = "preview-item preview-item-objective">
-                            <span class = "preview-item-val" id = "summary_dsp"></span>
-                        </div>
-                    </div>
-
-                    <div class = "preview-blk">
-                        <div class = "preview-blk-title">
-                            <h3>skills</h3>
-                        </div>
-                        <div class = "skills-items preview-blk-list" id = "skills_dsp">
-                            <!-- skills list here -->
-                        </div>
-                    </div>
-                </div>
-
-                <div class = "preview-cnt-r bg-white">
-                    <div class = "preview-blk">
-                        <div class = "preview-blk-title">
-                            <h3>educations</h3>
-                        </div>
-                        <div class = "educations-items preview-blk-list" id = "educations_dsp"></div>
-                    </div>
-
-                    <div class = "preview-blk">
-                        <div class = "preview-blk-title">
-                            <h3>experiences</h3>
-                        </div>
-                        <div class = "experiences-items preview-blk-list" id = "experiences_dsp"></div>
-                    </div>
-
-                    <div class = "preview-blk">
-                        <div class = "preview-blk-title">
-                            <h3>projects</h3>
-                        </div>
-                        <div class = "projects-items preview-blk-list" id = "projects_dsp"></div>
-                    </div>
-
-                    <div class = "preview-blk">
-                        <div class = "preview-blk-title">
-                            <h3>Achievements</h3>
-                        </div>
-                        <div class = "achievements-items preview-blk-list" id = "achievements_dsp"></div>
-                    </div>
-                </div>
-            </div>
+            <?php
+            include __DIR__ . '/../../template/cv-4.php';
+            ?>
         </section>
     </div>
 </main>

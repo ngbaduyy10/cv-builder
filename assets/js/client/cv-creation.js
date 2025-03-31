@@ -4,6 +4,7 @@ const mainForm = document.getElementById('cv-form');
 let firstnameElem = mainForm.firstname,
     lastnameElem = mainForm.lastname,
     imageElem = mainForm.image,
+    jobElem = mainForm.job,
     addressElem = mainForm.address,
     emailElem = mainForm.email,
     phonenoElem = mainForm.phoneno,
@@ -12,6 +13,7 @@ let firstnameElem = mainForm.firstname,
 // display elements
 let nameDsp = document.getElementById('fullname_dsp'),
     imageDsp = document.getElementById('image_dsp'),
+    jobDsp = document.getElementById('job_dsp'),
     phonenoDsp = document.getElementById('phoneno_dsp'),
     emailDsp = document.getElementById('email_dsp'),
     addressDsp = document.getElementById('address_dsp'),
@@ -77,6 +79,7 @@ const getUserInput = () => {
     return {
         firstname: firstnameElem.value,
         lastname: lastnameElem.value,
+        job: jobElem.value,
         address: addressElem.value,
         email: emailElem.value,
         phoneno: phonenoElem.value,
@@ -113,6 +116,7 @@ const showListData = (listData, listContainer) => {
 
 const displayCV = (userData) => {
     nameDsp.innerHTML = userData.firstname + " " + userData.lastname;
+    jobDsp.innerHTML = userData.job;
     phonenoDsp.innerHTML = userData.phoneno;
     emailDsp.innerHTML = userData.email;
     addressDsp.innerHTML = userData.address;

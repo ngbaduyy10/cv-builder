@@ -1,0 +1,104 @@
+.preview-cnt{
+    aspect-ratio: 1 / 1.414;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    font-family: "Poppins", sans-serif;
+    padding: 4rem 3rem;
+}
+
+.preview-cnt-t, .preview-cnt-b{
+    display: grid;
+    gap: 3rem;
+    grid-template-columns: 32% auto;
+}
+
+.preview-image{
+    width: 10rem;
+    height: 10rem;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 1rem;
+}
+.preview-image img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.preview-item.preview-item-name{
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-top: 1rem;
+    margin-bottom: 0;
+    position: relative;
+}
+
+.preview-item.preview-item-job{
+    font-size: 1rem;
+    margin-top: 0.4rem;
+}
+
+.detail-title {
+    font-weight: 600;
+}
+
+.preview-item.preview-item-objective{
+    text-align: justify;
+}
+
+.preview-blk{
+    padding: 1rem 0;
+    margin-bottom: 0.8rem;
+}
+.preview-blk-title h3{
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding-bottom: 0.5rem;
+    color: #a9974d;
+}
+.preview-blk-title{
+    margin-bottom: 0.4rem;
+}
+.preview-item{
+    font-size: 0.9rem;
+    margin-bottom: 0.6rem;
+}
+
+.preview-cnt-r .preview-blk-title{
+    color: black;
+}
+
+.achievements-items.preview-blk-list .preview-item span:first-child {
+    font-weight: 600;
+    display: block;
+}
+
+
+.educations-items.preview-blk-list .preview-item span:first-child,
+.experiences-items.preview-blk-list .preview-item span:first-child{
+    margin-right: 1rem;
+    font-weight: 600;
+}
+
+.educations-items.preview-blk-list .preview-item span:nth-child(4),
+.experiences-items.preview-blk-list .preview-item span:nth-child(4){
+    font-weight: 600;
+    display: block;
+}
+
+.experiences-items.preview-blk-list .preview-item span:nth-child(5){
+    font-size: 0.9rem;
+    display: block;
+    text-align: justify;
+}
+.projects-items.preview-blk-list .preview-item span:first-child{
+    font-weight: 600;
+    display: block;
+}
+.projects-items.preview-blk-list .preview-item span:nth-child(2){
+    display: block;
+    text-align: justify;
+}
