@@ -1,3 +1,8 @@
+<?php
+$id = $_GET['id'];
+$cv = __DIR__ . "/../../template/cv-{$id}.php";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +17,7 @@
     />
     <link rel="stylesheet" href="assets/css/client/layout.css" />
     <link rel="stylesheet" href="assets/css/client/cv-creation.css" />
-    <link rel="stylesheet" href="assets/css/template/cv-4.css" />
+    <link rel="stylesheet" href="assets/css/template/cv-<?php echo $id; ?>.css" />
     <title>CV Creation</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -245,9 +250,7 @@ include __DIR__ . '/../../layouts/client/header.php';
         </section>
 
         <section id = "preview-sc" class = "print_area col-12 col-lg-6">
-            <?php
-            include __DIR__ . '/../../template/cv-4.php';
-            ?>
+            <?php include $cv; ?>
         </section>
     </div>
 </main>
