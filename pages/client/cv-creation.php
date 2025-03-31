@@ -32,7 +32,7 @@ include __DIR__ . '/../../layouts/client/header.php';
 <main class="cv-creation">
     <div class="container row gx-4">
         <div class="col-12 d-flex justify-content-end gap-3">
-            <button class="button button-save d-flex align-items-center gap-2">
+            <button class="button button-save d-flex align-items-center gap-2" onclick="saveCV()" id="save-cv-btn">
                 <i class='bx bxs-save'></i> Save
             </button>
             <button class="button button-print d-flex align-items-center gap-2" onclick="printCV()">
@@ -41,6 +41,11 @@ include __DIR__ . '/../../layouts/client/header.php';
         </div>
         <section id="about-sc" class="col-12 col-lg-6">
             <form action="" class="cv-form" id = "cv-form">
+                <div class = "form-elem">
+                    <label for = "" class = "form-label">CV Name</label>
+                    <input name = "cvname" type = "text" class = "form-control cvname" id = "">
+                    <span class="form-text"></span>
+                </div>
                 <div class = "cv-form-blk">
                     <div class = "cv-form-row-title">
                         <h3>Personal Information</h3>
@@ -266,6 +271,9 @@ include __DIR__ . '/../../layouts/client/footer.php';
 
 <!--Bootstrap-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+<!--SweetAlert2-->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
 
 <script src="assets/js/client/repeater.js"></script>
 <script src="assets/js/client/cv-creation.js"></script>

@@ -1,7 +1,8 @@
 const mainForm = document.getElementById('cv-form');
 
 // user inputs elements
-let firstnameElem = mainForm.firstname,
+let cvnameElem = mainForm.cvname,
+    firstnameElem = mainForm.firstname,
     lastnameElem = mainForm.lastname,
     imageElem = mainForm.image,
     jobElem = mainForm.job,
@@ -77,6 +78,7 @@ const getUserInput = () => {
     let skillElem = document.querySelectorAll('.skill');
 
     return {
+        cvname: cvnameElem.value,
         firstname: firstnameElem.value,
         lastname: lastnameElem.value,
         job: jobElem.value,
@@ -143,4 +145,75 @@ function previewImage(){
 
 const printCV = () => {
     window.print();
+}
+
+const clearCV = () => {
+    mainForm.reset();
+    nameDsp.innerHTML = "";
+    jobDsp.innerHTML = "";
+    phonenoDsp.innerHTML = "";
+    emailDsp.innerHTML = "";
+    addressDsp.innerHTML = "";
+    summaryDsp.innerHTML = "";
+    projectsDsp.innerHTML = "";
+    achievementsDsp.innerHTML = "";
+    skillsDsp.innerHTML = "";
+    educationsDsp.innerHTML = "";
+    experiencesDsp.innerHTML = "";
+}
+
+const saveCV = () => {
+    const userData = getUserInput();
+    const urlParams = new URLSearchParams(window.location.search);
+    const templateId = urlParams.get('id');
+
+    $.ajax({
+        url: '/cv-builder/api/cv.api.php',
+        method: 'POST',
+        dataType: "json",
+        data: {
+            action: 'create_cv',
+            template_id: templateId,
+            ...userData,
+            educations: JSON.stringify(userData.educations),
+            experiences: JSON.stringify(userData.experiences),
+            projects: JSON.stringify(userData.projects),
+            skills: JSON.stringify(userData.skills),
+            achievements: JSON.stringify(userData.achievements)
+        },
+        success: function(response){
+            if (response.success) {
+                Swal.fire({
+                    toast: true,
+                    position: 'top-end',
+                    icon: 'success',
+                    title: response.message,
+                    showConfirmButton: false,
+                    showCloseButton: true,
+                    timer: 3000,
+                    customClass: {
+                        popup: 'toast-size',
+                    }
+                });
+                mainForm.querySelector('#save-cv-btn').disabled = true;
+                clearCV();
+                setTimeout(() => {
+                    window.location.href = '/cv-builder/index.php?page=my-cv';
+                }, 3000);
+            } else {
+                Swal.fire({
+                    toast: true,
+                    position: 'top-end',
+                    icon: 'error',
+                    title: response.message,
+                    showConfirmButton: false,
+                    showCloseButton: true,
+                    timer: 3000,
+                    customClass: {
+                        popup: 'toast-size',
+                    }
+                });
+            }
+        }
+    });
 }
