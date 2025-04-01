@@ -134,7 +134,7 @@
 
 @media print{
     html {
-        font-size: 77%;
+        font-size: 76%;
     }
     body *{
         visibility: hidden;

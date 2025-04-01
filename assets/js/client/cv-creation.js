@@ -42,11 +42,7 @@ const fetchValues = (attrs, ...nodeLists) => {
     for(let i = 0; i < elemsDataCount; i++){
         let dataObj = {};
         for(let j = 0; j < elemsAttrsCount; j++) {
-            if(attrs[j].includes('date') && nodeLists[j][i].value){
-                dataObj[`${attrs[j]}`] = formatDate(nodeLists[j][i].value);
-            } else {
-                dataObj[`${attrs[j]}`] = nodeLists[j][i].value;
-            }
+            dataObj[`${attrs[j]}`] = nodeLists[j][i].value;
         }
         tempDataArr.push(dataObj);
     }
@@ -105,7 +101,9 @@ const showListData = (listData, listContainer) => {
             let subItemElem = document.createElement('span');
             subItemElem.classList.add('preview-item-val');
             if (key.includes('start_date') && listItem[key]) {
-                subItemElem.innerHTML = `${listItem[key]} - `;
+                subItemElem.innerHTML = `${formatDate(listItem[key])} - `;
+            } else if (key.includes('end_date') && listItem[key]) {
+                subItemElem.innerHTML += `${formatDate(listItem[key])}`;
             } else {
                 subItemElem.innerHTML = `${listItem[key]}`;
             }
@@ -147,40 +145,119 @@ const printCV = () => {
     window.print();
 }
 
-// const clearCV = () => {
-//     mainForm.reset();
-//     nameDsp.innerHTML = "";
-//     jobDsp.innerHTML = "";
-//     phonenoDsp.innerHTML = "";
-//     emailDsp.innerHTML = "";
-//     addressDsp.innerHTML = "";
-//     summaryDsp.innerHTML = "";
-//     projectsDsp.innerHTML = "";
-//     achievementsDsp.innerHTML = "";
-//     skillsDsp.innerHTML = "";
-//     educationsDsp.innerHTML = "";
-//     experiencesDsp.innerHTML = "";
-// }
+const insertCV = (cvData) => {
+    for (let i = 0; i < cvData.educations.length - 1; i++) {
+        $('.education-data [data-repeater-create]').click();
+    }
+    for (let i = 0; i < cvData.experiences.length - 1; i++) {
+        $('.experience-data [data-repeater-create]').click();
+    }
+    for (let i = 0; i < cvData.projects.length - 1; i++) {
+        $('.project-data [data-repeater-create]').click();
+    }
+    for (let i = 0; i < cvData.skills.length - 1; i++) {
+        $('.skill-data [data-repeater-create]').click();
+    }
+    for (let i = 0; i < cvData.achievements.length - 1; i++) {
+        $('.achievement-data [data-repeater-create]').click();
+    }
+    // set the values for education, experience, project, skill, and achievement
+    let eduSchoolElem = document.querySelectorAll('.edu_school'),
+        eduDegreeElem = document.querySelectorAll('.edu_degree'),
+        eduStartDateElem = document.querySelectorAll('.edu_start_date'),
+        eduGraduationDateElem = document.querySelectorAll('.edu_graduation_date');
 
-const saveCV = () => {
-    Swal.fire({
-        title: "Do you want to save the changes?",
-        showCancelButton: true,
-        confirmButtonText: "Save",
-        customClass: {
-            popup : 'custom-swal-size'
-        }
-    }).then((result) => {
-        if (result.isConfirmed) {
-            createCV();
-        }
-    });
+    let expTitleElem = document.querySelectorAll('.exp_title'),
+        expOrganizationElem = document.querySelectorAll('.exp_organization'),
+        expStartDateElem = document.querySelectorAll('.exp_start_date'),
+        expEndDateElem = document.querySelectorAll('.exp_end_date'),
+        expDescriptionElem = document.querySelectorAll('.exp_description');
+
+    let projTitleElem = document.querySelectorAll('.proj_title'),
+        projDescriptionElem = document.querySelectorAll('.proj_description');
+
+    let skillElem = document.querySelectorAll('.skill');
+
+    let achievementsTitleElem = document.querySelectorAll('.achieve_title'),
+        achievementsDescriptionElem = document.querySelectorAll('.achieve_description');
+
+    for (let i = 0; i < cvData.educations.length; i++) {
+        eduSchoolElem[i].value = cvData.educations[i].edu_school;
+        eduDegreeElem[i].value = cvData.educations[i].edu_degree;
+        eduStartDateElem[i].value = cvData.educations[i].edu_start_date;
+        eduGraduationDateElem[i].value = cvData.educations[i].edu_graduation_date;
+    }
+
+    for (let i = 0; i < cvData.experiences.length; i++) {
+        expTitleElem[i].value = cvData.experiences[i].exp_title;
+        expOrganizationElem[i].value = cvData.experiences[i].exp_organization;
+        expStartDateElem[i].value = cvData.experiences[i].exp_start_date;
+        expEndDateElem[i].value = cvData.experiences[i].exp_end_date;
+        expDescriptionElem[i].value = cvData.experiences[i].exp_description;
+    }
+
+    for (let i = 0; i < cvData.projects.length; i++) {
+        projTitleElem[i].value = cvData.projects[i].proj_title;
+        projDescriptionElem[i].value = cvData.projects[i].proj_description;
+    }
+
+    for (let i = 0; i < cvData.skills.length; i++) {
+        skillElem[i].value = cvData.skills[i].skill;
+    }
+
+    for (let i = 0; i < cvData.achievements.length; i++) {
+        achievementsTitleElem[i].value = cvData.achievements[i].achieve_title;
+        achievementsDescriptionElem[i].value = cvData.achievements[i].achieve_description;
+    }
+
+
+    cvnameElem.value = cvData.cvname;
+    firstnameElem.value = cvData.firstname;
+    lastnameElem.value = cvData.lastname;
+    jobElem.value = cvData.job;
+    jobElem.image = cvData.image;
+    addressElem.value = cvData.address;
+    emailElem.value = cvData.email;
+    phonenoElem.value = cvData.phoneno;
+    summaryElem.value = cvData.summary;
+    displayCV(cvData);
 }
+
+$(document).ready(function () {
+    const urlParams = new URLSearchParams(window.location.search);
+    const cvId = urlParams.get('cv_id');
+
+    if (cvId) {
+        $.ajax({
+            url: '/cv-builder/api/cv.api.php',
+            method: 'GET',
+            dataType: 'json',
+            data: {
+                action: 'get_cv_by_id',
+                id: cvId
+            },
+            success: function(response){
+                if (response.success) {
+                    const cvData = {
+                        ...response.data,
+                        educations: JSON.parse(response.data.educations),
+                        experiences: JSON.parse(response.data.experiences),
+                        projects: JSON.parse(response.data.projects),
+                        skills: JSON.parse(response.data.skills),
+                        achievements: JSON.parse(response.data.achievements),
+                    };
+
+                    insertCV(cvData);
+                }
+            }
+        });
+    }
+});
 
 const createCV = () => {
     const userData = getUserInput();
     const urlParams = new URLSearchParams(window.location.search);
-    const templateId = urlParams.get('id');
+    const templateId = urlParams.get('template_id');
 
     $.ajax({
         url: '/cv-builder/api/cv.api.php',
@@ -224,6 +301,78 @@ const createCV = () => {
                         popup: 'toast-size',
                     }
                 });
+            }
+        }
+    });
+}
+
+const updateCV = () => {
+    const userData = getUserInput();
+    const urlParams = new URLSearchParams(window.location.search);
+    const cvId = urlParams.get('cv_id');
+    const templateId = urlParams.get('template_id');
+
+    $.ajax({
+        url: '/cv-builder/api/cv.api.php',
+        method: 'POST',
+        dataType: "json",
+        data: {
+            action: 'update_cv',
+            id: cvId,
+            template_id: templateId,
+            ...userData,
+            educations: JSON.stringify(userData.educations),
+            experiences: JSON.stringify(userData.experiences),
+            projects: JSON.stringify(userData.projects),
+            skills: JSON.stringify(userData.skills),
+            achievements: JSON.stringify(userData.achievements)
+        },
+        success: function(response){
+            if (response.success) {
+                Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "Your work has been saved",
+                    showConfirmButton: false,
+                    timer: 1500,
+                    customClass: {
+                        popup: 'custom-swal-size',
+                    }
+                });
+            } else {
+                Swal.fire({
+                    toast: true,
+                    position: 'top-end',
+                    icon: 'error',
+                    title: response.message,
+                    showConfirmButton: false,
+                    showCloseButton: true,
+                    timer: 2000,
+                    customClass: {
+                        popup: 'toast-size',
+                    }
+                });
+            }
+        }
+    });
+}
+
+const saveCV = () => {
+    Swal.fire({
+        title: "Do you want to save the changes?",
+        showCancelButton: true,
+        confirmButtonText: "Save",
+        customClass: {
+            popup : 'custom-swal-size'
+        }
+    }).then((result) => {
+        if (result.isConfirmed) {
+            const urlParams = new URLSearchParams(window.location.search);
+            const cvId = urlParams.get('cv_id');
+            if (cvId) {
+                updateCV();
+            } else {
+                createCV();
             }
         }
     });

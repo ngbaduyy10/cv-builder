@@ -22,7 +22,7 @@
     display: none;
     position: absolute;
     top: 40%;
-    left: 42%;
+    left: 40%;
     transform: translate(-50%, -50%);
     opacity: 50%;
     color: white;
@@ -44,7 +44,7 @@
     display: none;
     position: absolute;
     top: 40%;
-    left: 58%;
+    left: 60%;
     transform: translate(-50%, -50%);
     opacity: 50%;
     color: white;

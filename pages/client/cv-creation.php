@@ -1,6 +1,6 @@
 <?php
-$id = $_GET['id'];
-$cv = __DIR__ . "/../../template/cv-{$id}.php";
+$template_id = $_GET['template_id'];
+$cv = __DIR__ . "/../../template/cv-{$template_id}.php";
 ?>
 
 <!DOCTYPE html>
@@ -17,7 +17,7 @@ $cv = __DIR__ . "/../../template/cv-{$id}.php";
     />
     <link rel="stylesheet" href="assets/css/client/layout.css" />
     <link rel="stylesheet" href="assets/css/client/cv-creation.css" />
-    <link rel="stylesheet" href="assets/css/template/cv-<?php echo $id; ?>.css" />
+    <link rel="stylesheet" href="assets/css/template/cv-<?php echo $template_id; ?>.css" />
     <title>CV Creation</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -32,7 +32,7 @@ include __DIR__ . '/../../layouts/client/header.php';
 <main class="cv-creation">
     <div class="container row gx-4">
         <div class="col-12 d-flex justify-content-end gap-3">
-            <button class="button button-save d-flex align-items-center gap-2" onclick="saveCV()" id="save-cv-btn">
+            <button class="button button-save d-flex align-items-center gap-2" onclick="saveCV()"  id="save-cv-btn">
                 <i class='bx bxs-save'></i> Save
             </button>
             <button class="button button-print d-flex align-items-center gap-2" onclick="printCV()">
@@ -93,7 +93,7 @@ include __DIR__ . '/../../layouts/client/header.php';
                     </div>
                 </div>
 
-                <div class="cv-form-blk">
+                <div class="cv-form-blk achievement-data">
                     <div class = "cv-form-row-title">
                         <h3>Achievements</h3>
                     </div>
@@ -122,7 +122,7 @@ include __DIR__ . '/../../layouts/client/header.php';
                     </div>
                 </div>
 
-                <div class="cv-form-blk">
+                <div class="cv-form-blk experience-data">
                     <div class = "cv-form-row-title">
                         <h3>Experiences</h3>
                     </div>
@@ -165,7 +165,7 @@ include __DIR__ . '/../../layouts/client/header.php';
                     </div>
                 </div>
 
-                <div class="cv-form-blk">
+                <div class="cv-form-blk education-data">
                     <div class = "cv-form-row-title">
                         <h3>Education</h3>
                     </div>
@@ -202,7 +202,7 @@ include __DIR__ . '/../../layouts/client/header.php';
                     </div>
                 </div>
 
-                <div class="cv-form-blk">
+                <div class="cv-form-blk project-data">
                     <div class = "cv-form-row-title">
                         <h3>Projects</h3>
                     </div>
@@ -229,7 +229,7 @@ include __DIR__ . '/../../layouts/client/header.php';
                     </div>
                 </div>
 
-                <div class="cv-form-blk">
+                <div class="cv-form-blk skill-data">
                     <div class = "cv-form-row-title">
                         <h3>Skills</h3>
                     </div>
