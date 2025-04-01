@@ -147,22 +147,37 @@ const printCV = () => {
     window.print();
 }
 
-const clearCV = () => {
-    mainForm.reset();
-    nameDsp.innerHTML = "";
-    jobDsp.innerHTML = "";
-    phonenoDsp.innerHTML = "";
-    emailDsp.innerHTML = "";
-    addressDsp.innerHTML = "";
-    summaryDsp.innerHTML = "";
-    projectsDsp.innerHTML = "";
-    achievementsDsp.innerHTML = "";
-    skillsDsp.innerHTML = "";
-    educationsDsp.innerHTML = "";
-    experiencesDsp.innerHTML = "";
-}
+// const clearCV = () => {
+//     mainForm.reset();
+//     nameDsp.innerHTML = "";
+//     jobDsp.innerHTML = "";
+//     phonenoDsp.innerHTML = "";
+//     emailDsp.innerHTML = "";
+//     addressDsp.innerHTML = "";
+//     summaryDsp.innerHTML = "";
+//     projectsDsp.innerHTML = "";
+//     achievementsDsp.innerHTML = "";
+//     skillsDsp.innerHTML = "";
+//     educationsDsp.innerHTML = "";
+//     experiencesDsp.innerHTML = "";
+// }
 
 const saveCV = () => {
+    Swal.fire({
+        title: "Do you want to save the changes?",
+        showCancelButton: true,
+        confirmButtonText: "Save",
+        customClass: {
+            popup : 'custom-swal-size'
+        }
+    }).then((result) => {
+        if (result.isConfirmed) {
+            createCV();
+        }
+    });
+}
+
+const createCV = () => {
     const userData = getUserInput();
     const urlParams = new URLSearchParams(window.location.search);
     const templateId = urlParams.get('id');
@@ -184,22 +199,18 @@ const saveCV = () => {
         success: function(response){
             if (response.success) {
                 Swal.fire({
-                    toast: true,
-                    position: 'top-end',
-                    icon: 'success',
-                    title: response.message,
+                    position: "center",
+                    icon: "success",
+                    title: "Your work has been saved",
                     showConfirmButton: false,
-                    showCloseButton: true,
-                    timer: 3000,
+                    timer: 1500,
                     customClass: {
-                        popup: 'toast-size',
+                        popup: 'custom-swal-size',
                     }
                 });
-                mainForm.querySelector('#save-cv-btn').disabled = true;
-                clearCV();
                 setTimeout(() => {
                     window.location.href = '/cv-builder/index.php?page=my-cv';
-                }, 3000);
+                }, 1500);
             } else {
                 Swal.fire({
                     toast: true,
@@ -208,7 +219,7 @@ const saveCV = () => {
                     title: response.message,
                     showConfirmButton: false,
                     showCloseButton: true,
-                    timer: 3000,
+                    timer: 2000,
                     customClass: {
                         popup: 'toast-size',
                     }
