@@ -12,7 +12,7 @@ $(document).ready(function () {
                 if (response.success) {
                     response.data.forEach((cv) => {
                         let cvHtml = `
-                            <div class="col-12 col-md-6 col-xl-4">
+                            <div class="col-12 col-md-6 col-lg-4 col-xl-3">
                                 <div class="cv-item p-4 h-100 d-flex flex-column">
                                     <img src="${cv.preview_image}" alt="" class="w-100" />
                                     <a href="#" class="button button-edit">

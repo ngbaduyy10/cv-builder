@@ -63,13 +63,13 @@
 }
 
 .my-cv .cv-item .title {
-    font-size: 2.2rem;
+    font-size: 2rem;
     font-weight: 700;
     color: black;
 }
 
 .my-cv .cv-item .desc {
-    font-size: 1.6rem;
+    font-size: 1.3rem;
     font-weight: 400;
     color: #6c757d;
     line-height: 1.2;
@@ -77,6 +77,6 @@
 }
 
 .my-cv .detail i  {
-    font-size: 1.6rem;
+    font-size: 1.3rem;
     color: #6c757d;
 }
