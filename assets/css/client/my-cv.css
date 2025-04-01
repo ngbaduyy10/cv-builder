@@ -1,0 +1,82 @@
+.my-cv {
+    font-family: "Sen", sans-serif;
+    margin: 5rem 0;
+}
+
+.my-cv .title {
+    font-size: 2.6rem;
+    font-weight: 600;
+}
+
+.my-cv .cv-item {
+    position: relative;
+    overflow: hidden;
+    background-color: var(--background-color);
+}
+
+.my-cv .cv-item img:hover {
+    box-shadow: 0 0 16px rgba(0, 0, 0, 0.5);
+}
+
+.my-cv .cv-item .button-edit {
+    display: none;
+    position: absolute;
+    top: 40%;
+    left: 42%;
+    transform: translate(-50%, -50%);
+    opacity: 50%;
+    color: white;
+    background-color: blue;
+    border: none;
+    border-radius: 10px;
+    transition: background-color 0.3s;
+}
+
+.my-cv .cv-item:hover .button-edit {
+    display: block;
+}
+
+.my-cv .cv-item .button-edit:hover {
+    opacity: 1;
+}
+
+.my-cv .cv-item .button-delete {
+    display: none;
+    position: absolute;
+    top: 40%;
+    left: 58%;
+    transform: translate(-50%, -50%);
+    opacity: 50%;
+    color: white;
+    background-color: red;
+    border: none;
+    border-radius: 10px;
+    transition: background-color 0.3s;
+}
+
+.my-cv .cv-item:hover .button-delete {
+    display: block;
+}
+
+.my-cv .cv-item .button-delete:hover {
+    opacity: 1;
+}
+
+.my-cv .cv-item .title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: black;
+}
+
+.my-cv .cv-item .desc {
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: #6c757d;
+    line-height: 1.2;
+    margin: 0;
+}
+
+.my-cv .detail i  {
+    font-size: 1.6rem;
+    color: #6c757d;
+}

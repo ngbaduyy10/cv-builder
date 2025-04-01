@@ -31,4 +31,14 @@ class Cv extends Database {
         $stmt->execute();
         return $this->conn->lastInsertId();
     }
+    public function get_cv () {
+        $sql = "
+            SELECT c.cvname, c.created_at, c.updated_at, t.name as template_name, t.preview_image
+            FROM cv c
+            JOIN template t ON c.template_id = t.id
+        ";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
