@@ -17,6 +17,9 @@ function handlePostRequest () {
         } else if ($_POST['action'] === 'update_cv') {
             $result = (new Cv())->update_cv($_POST);
             echo json_encode(['success' => true, 'data' => $result, 'message' => 'CV updated successfully']);
+        } else if ($_POST['action'] === 'delete_cv') {
+            $result = (new Cv())->delete_cv($_POST['id']);
+            echo json_encode(['success' => true, 'data' => $result, 'message' => 'CV deleted successfully']);
         } else {
             echo json_encode(['success' => false, 'message' => 'Invalid action']);
         }

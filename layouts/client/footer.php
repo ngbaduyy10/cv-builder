@@ -4,8 +4,7 @@
             <div class="col-md-4 col-12 me-auto mb-5">
                 <div class="logo">Bright</div>
                 <p class="desc">
-                    Need to help for your dream Career? trust us. With Lesson, study
-                    becomes a lot easier with us.
+                    Ready to land your dream job? With Bright, crafting the perfect CV is just minutes away.
                 </p>
                 <div class="social">
                     <a href="#!">

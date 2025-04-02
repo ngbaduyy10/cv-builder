@@ -102,7 +102,7 @@ const showListData = (listData, listContainer) => {
             subItemElem.classList.add('preview-item-val');
             if (key.includes('start_date') && listItem[key]) {
                 subItemElem.innerHTML = `${formatDate(listItem[key])} - `;
-            } else if (key.includes('end_date') && listItem[key]) {
+            } else if (key.includes('end_date') || key.includes('graduation_date') && listItem[key]) {
                 subItemElem.innerHTML += `${formatDate(listItem[key])}`;
             } else {
                 subItemElem.innerHTML = `${listItem[key]}`;

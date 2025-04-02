@@ -1,19 +1,23 @@
 <?php
 require 'database.php';
+session_start();
 
 class Cv extends Database {
     private $conn;
+    private $user_id;
     public function __construct() {
         $this->conn = $this->connect();
+        $this->user_id = $_SESSION['user']['id'];
     }
     public function create_cv ($data) {
         $sql = "
             INSERT INTO cv 
-            (template_id, cvname, firstname, lastname, job, address, email, phoneno, summary, educations, projects, experiences, skills, achievements) 
+            (user_id, template_id, cvname, firstname, lastname, job, address, email, phoneno, summary, educations, projects, experiences, skills, achievements) 
             VALUES 
-            (:template_id, :cvname, :firstname, :lastname, :job, :address, :email, :phoneno, :summary, :educations, :projects, :experiences, :skills, :achievements)
+            (:user_id, :template_id, :cvname, :firstname, :lastname, :job, :address, :email, :phoneno, :summary, :educations, :projects, :experiences, :skills, :achievements)
         ";
         $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':user_id', $this->user_id);
         $stmt->bindParam(':template_id', $data['template_id']);
         $stmt->bindParam(':cvname', $data['cvname']);
         $stmt->bindParam(':firstname', $data['firstname']);
@@ -75,8 +79,10 @@ class Cv extends Database {
             SELECT c.id, c.template_id, c.cvname, c.created_at, c.updated_at, t.name as template_name, t.preview_image
             FROM cv c
             JOIN template t ON c.template_id = t.id
+            WHERE c.user_id = :user_id
         ";
         $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':user_id', $this->user_id);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -91,5 +97,16 @@ class Cv extends Database {
         $stmt->bindParam(':id', $id);
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function delete_cv ($id) {
+        $sql = "
+            DELETE FROM cv 
+            WHERE id = :id
+        ";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+        return true;
     }
 }

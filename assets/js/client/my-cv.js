@@ -8,7 +8,6 @@ $(document).ready(function () {
                 action: "get_cv",
             },
             success: function (response) {
-                console.log(response);
                 if (response.success) {
                     response.data.forEach((cv) => {
                         let cvHtml = `
@@ -18,9 +17,9 @@ $(document).ready(function () {
                                     <a href="?page=cv-creation&template_id=${cv.template_id}&cv_id=${cv.id}" class="button button-edit">
                                         <i class='bx bxs-edit-alt'></i>
                                     </a>
-                                    <a href="#" class="button button-delete">
+                                    <button class="button button-delete" id="button-delete" data-cv-id="${cv.id}">
                                         <i class='bx bx-trash'></i>
-                                    </a>
+                                    </button>
                                     <div class="mt-3 detail">
                                         <h3 class="title">${cv.cvname}</h3>
                                         <div class="d-flex align-items-center gap-2">
@@ -50,4 +49,52 @@ $(document).ready(function () {
         });
     }
     get_cv();
+
+    $(document).on('click', '#button-delete', function () {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#0179FE",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!",
+            customClass: {
+                popup: 'custom-swal-size'
+            }
+        }).then((result) => {
+            if (result.isConfirmed) {
+                let cv_id = $(this).data('cv-id');
+                $.ajax({
+                    url: "/cv-builder/api/cv.api.php",
+                    method: "POST",
+                    dataType: "json",
+                    data: {
+                        action: "delete_cv",
+                        id: cv_id,
+                    },
+                    success: function (response) {
+                        if (response.success) {
+                            Swal.fire({
+                                position: "center",
+                                icon: "success",
+                                title: "Your CV has been deleted!",
+                                showConfirmButton: false,
+                                timer: 1500,
+                                customClass: {
+                                    popup: 'custom-swal-size',
+                                }
+                            });
+                            setTimeout(() => {
+                                window.location.reload();
+                            }, 1500);
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        console.error("Error deleting cv:", error);
+                    }
+                });
+            }
+        });
+    });
 });

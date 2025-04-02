@@ -1,0 +1,63 @@
+.home {
+    font-family: "Sen", sans-serif;
+}
+
+.hero {
+    background: var(--background-color);
+    padding: 56px 0 65px;
+}
+.hero .body {
+    display: flex;
+}
+
+.hero .media-block .img {
+    width: 100%;
+    object-fit: cover;
+}
+
+.hero .content-block .heading {
+    color: #171100;
+    font-size: 5rem;
+    font-weight: 700;
+    line-height: 1.17;
+    letter-spacing: -1.16px;
+}
+.hero .content-block .desc {
+    margin-top: 22px;
+    color: #5f5b53;
+    font-size: 1.8rem;
+    line-height: 1.67;
+    text-align: justify;
+}
+.hero .button-cta {
+    margin-top: 38px;
+    min-width: 170px;
+    line-height: 64px;
+    font-size: 18px;
+    background: var(--main-color);
+}
+.hero .button-sign-up {
+    margin-top: 38px;
+    min-width: 160px;
+    line-height: 64px;
+    font-size: 18px;
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+}
+.hero .content-block .desc1 {
+    margin-top: 48px;
+}
+.hero .content-block .desc2 {
+    margin-top: 8px;
+}
+.hero .content-block .desc2 strong {
+    color: #171100;
+    margin-right: 7px;
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 1.23;
+}
+.hero .content-block .desc2 strong:nth-child(2) {
+    margin-left: 22px;
+}

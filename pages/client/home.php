@@ -11,6 +11,7 @@
         rel="stylesheet"
     />
     <link rel="stylesheet" href="assets/css/client/layout.css" />
+    <link rel="stylesheet" href="assets/css/client/home.css" />
     <title>Home</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -22,7 +23,38 @@
 include __DIR__ . '/../../layouts/client/header.php';
 ?>
 
-<div>Home</div>
+<main class="home">
+    <div class="hero">
+        <div class="container">
+            <div class="body row align-items-center">
+                <div class="col-6 col-xl-4 media-block d-none d-lg-block">
+                    <img
+                            src="https://www.livecareer.com/lcapp/uploads/2023/11/cv-format-banner.png"
+                            alt="Learn without limits and spread knowledge."
+                            class="img"
+                    />
+                </div>
+
+                <div class="col-lg-6 col-xl-8 col-12 content-block px-5">
+                    <h1 class="heading">
+                        Craft Your Career Story, Stand Out From Day One.
+                    </h1>
+                    <p class="desc">
+                        Unlock your career potential with our easy-to-use CV builder. Whether you're starting fresh or updating your professional profile, our platform guides you through every step of creating a standout CV that highlights your skills, experience, and achievements. With customizable templates and expert tips, we make job applications a breeze. Start building your future today—no experience needed!
+                    </p>
+                    <div class="d-flex align-items-center gap-3">
+                        <a href="?page=template" class="button button-cta">See Templates</a>
+                        <a href="?page=register" class="button button-sign-up">Sign Up</a>
+                    </div>
+                    <p class="desc desc1">Recent engagement</p>
+                    <p class="desc desc2">
+                        <strong>100+</strong>Job Seekers<strong>20+</strong>Templates
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
 
 <?php
 include __DIR__ . '/../../layouts/client/footer.php';
