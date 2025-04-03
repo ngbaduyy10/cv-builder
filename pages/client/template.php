@@ -35,32 +35,7 @@ include __DIR__ . '/../../layouts/client/header.php';
                 </div>
 
                 <div class="filter-title my-3">Types</div>
-                <div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChronological">
-                        <label class="form-check-label" for="flexCheckChronological">
-                            Chronological
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckFunctional">
-                        <label class="form-check-label" for="flexCheckFunctional">
-                            Functional
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckCombination">
-                        <label class="form-check-label" for="flexCheckCombination">
-                            Combination
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckAcademic">
-                        <label class="form-check-label" for="flexCheckAcademic">
-                            Academic
-                        </label>
-                    </div>
-                </div>
+                <div id="type-list"></div>
             </div>
 
             <div class="col-lg-10 col-12 px-5">
@@ -78,11 +53,11 @@ include __DIR__ . '/../../layouts/client/header.php';
                                 Sort by
                             </button>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item courses-sort" data-sort="price-asc" href="">Price: Low to High</a></li>
-                                <li><a class="dropdown-item courses-sort" data-sort="price-desc" href="">Price: High to Low</a></li>
-                                <li><a class="dropdown-item courses-sort" data-sort="rating-asc" href="">Rating: Low to High</a></li>
-                                <li><a class="dropdown-item courses-sort" data-sort="rating-desc" href="">Rating: High to Low</a></li>
-                                <li><a class="dropdown-item courses-sort active" data-sort="default" href="">Default</a></li>
+                                <li><a class="dropdown-item template-sort" data-sort="price-asc" href="">Price: Low to High</a></li>
+                                <li><a class="dropdown-item template-sort" data-sort="price-desc" href="">Price: High to Low</a></li>
+                                <li><a class="dropdown-item template-sort" data-sort="rating-asc" href="">Rating: Low to High</a></li>
+                                <li><a class="dropdown-item template-sort" data-sort="rating-desc" href="">Rating: High to Low</a></li>
+                                <li><a class="dropdown-item template-sort active" data-sort="default" href="">Default</a></li>
                             </ul>
                         </div>
                     </div>

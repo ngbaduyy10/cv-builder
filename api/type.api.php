@@ -1,5 +1,5 @@
 <?php
-require_once '../config/template.php';
+require_once '../config/type.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 //    handlePostRequest();
@@ -9,10 +9,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     echo json_encode(['status' => 'error', 'message' => 'Invalid request method']);
 }
 
-function handleGetRequest () {
+function handleGetRequest() {
     if (isset($_GET['action'])) {
-        if ($_GET['action'] === 'get_templates') {
-            $result = (new Template())->get_templates($_GET['sort'], $_GET['keyword'], $_GET['type']);
+        if ($_GET['action'] === 'get_types') {
+            $result = (new Type())->get_types();
             echo json_encode(['success' => true, 'data' => $result]);
         } else {
             echo json_encode(['success' => false, 'message' => 'Invalid action']);
