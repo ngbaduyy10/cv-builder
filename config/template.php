@@ -44,4 +44,27 @@ class Template extends Database {
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function create_template($name, $description, $preview_image, $type_id) {
+        if (empty($name) || empty($description) || empty($preview_image) || empty($type_id)) {
+            return false;
+        }
+        $sql = "INSERT INTO template (name, description, preview_image, type_id) VALUES (:name, :description, :preview_image, :type_id)";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':name', $name);
+        $stmt->bindParam(':description', $description);
+        $stmt->bindParam(':preview_image', $preview_image);
+        $stmt->bindParam(':type_id', $type_id);
+        return $stmt->execute();
+    }
+
+    public function delete_template($id) {
+        if (empty($id)) {
+            return false;
+        }
+        $sql = "DELETE FROM template WHERE id = :id";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':id', $id);
+        return $stmt->execute();
+    }
 }

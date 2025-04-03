@@ -26,6 +26,10 @@ switch ($page) {
         include './pages/admin/template-manage.php';
         break;
 
+    case 'template-create':
+        include './pages/admin/template-create.php';
+        break;
+
     case 'user-manage':
         include './pages/admin/user-manage.php';
         break;

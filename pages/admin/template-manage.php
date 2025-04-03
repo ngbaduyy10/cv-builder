@@ -34,7 +34,7 @@ include __DIR__ . '/../../layouts/admin/sidebar.php';
 <div class="admin-template">
     <div class="d-flex justify-content-between align-items-center">
         <div class="title d-none d-sm-block">TEMPLATE MANAGEMENT</div>
-        <a href="#" class="button button-create">
+        <a href="?page=template-create" class="button button-create">
             <i class='bx bx-plus'></i>
             New Template
         </a>
