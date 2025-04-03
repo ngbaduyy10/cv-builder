@@ -1,6 +1,6 @@
 <?php
-session_start();
 require 'database.php';
+session_start();
 class Auth extends Database {
     private $conn;
     public function __construct() {
@@ -136,6 +136,20 @@ class Auth extends Database {
             } else {
                 return ['success' => false, 'message' => 'An error occurred during login.'];
             }
+        }
+    }
+
+    public function authCheck() {
+        if (isset($_SESSION['user'])) {
+            return [
+                'success' => true,
+                'user' => $_SESSION['user']
+            ];
+        } else {
+            return [
+                'success' => false,
+                'message' => 'User not authenticated.'
+            ];
         }
     }
 }

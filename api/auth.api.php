@@ -4,7 +4,7 @@ require_once '../config/auth.php';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     handlePostRequest();
 } elseif ($_SERVER['REQUEST_METHOD'] === 'GET') {
-//    handleGetRequest();
+    handleGetRequest();
 } else {
     echo json_encode(['status' => 'error', 'message' => 'Invalid request method']);
 }
@@ -16,6 +16,19 @@ function handlePostRequest () {
             echo json_encode($result);
         } elseif ($_POST['action'] === 'login') {
             $result = (new Auth())->login($_POST['email'], $_POST['password']);
+            echo json_encode($result);
+        } else {
+            echo json_encode(['success' => false, 'message' => 'Invalid action']);
+        }
+    } else {
+        echo json_encode(['success' => false, 'message' => 'Action not provided']);
+    }
+}
+
+function handleGetRequest () {
+    if (isset($_GET['action'])) {
+        if ($_GET['action'] === 'auth_check') {
+            $result = (new Auth())->authCheck();
             echo json_encode($result);
         } else {
             echo json_encode(['success' => false, 'message' => 'Invalid action']);

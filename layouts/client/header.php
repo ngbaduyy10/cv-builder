@@ -23,10 +23,12 @@ $page = $_GET['page'] ?? 'home';
                         <a class="nav-link" href="?page=template">Template</a>
                         <hr class="<?php echo ($page == 'template') ? 'd-block' : 'd-none'; ?> w-50 m-0">
                     </li>
-                    <li class="nav-item d-block d-lg-flex">
-                        <a class="nav-link" href="?page=my-cv">MyCVs</a>
-                        <hr class="<?php echo ($page == 'my-cv') ? 'd-block' : 'd-none'; ?> w-50 m-0">
-                    </li>
+                    <?php if ($isLogin) { ?>
+                        <li class="nav-item d-block d-lg-flex">
+                            <a class="nav-link" href="?page=my-cv">MyCVs</a>
+                            <hr class="<?php echo ($page == 'my-cv') ? 'd-block' : 'd-none'; ?> w-50 m-0">
+                        </li>
+                    <?php } ?>
                     <li class="nav-item d-block d-lg-flex">
                         <a class="nav-link" href="?page=contact">Contact</a>
                         <hr class="<?php echo ($page == 'contact') ? 'd-block' : 'd-none'; ?> w-50 m-0">
@@ -40,7 +42,7 @@ $page = $_GET['page'] ?? 'home';
                     </button>
                     <ul class="dropdown-menu">
                         <li>
-                            <div class="dropdown-item dropdown-title">Logged in as <?php echo $_SESSION['user']['username'] ?></div>
+                            <div class="dropdown-item dropdown-title">Logged in as <strong><?php echo $_SESSION['user']['username'] ?></strong></div>
                         </li>
                         <li>
                             <div class="d-flex align-items-center gap-1 dropdown-content">
