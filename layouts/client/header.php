@@ -1,5 +1,7 @@
 <?php
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 $isLogin = isset($_SESSION['user']);
 $page = $_GET['page'] ?? 'home';
 ?>
