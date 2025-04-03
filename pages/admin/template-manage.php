@@ -1,10 +1,12 @@
 <?php
-//session_start();
-//if (!isset($_SESSION['user']['role']) || $_SESSION['user']['role'] !== 'admin') {
-//    header('Location: ?page=login');
-//    exit();
-//}
-//?>
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+if (!isset($_SESSION['user']['role']) || $_SESSION['user']['role'] !== 'admin') {
+    header('Location: ?page=404');
+    exit();
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">

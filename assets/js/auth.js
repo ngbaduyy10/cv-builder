@@ -47,7 +47,11 @@ $(document).ready(function () {
             },
             success: function (response) {
                 if (response.success) {
-                    window.location.href = "index.php?page=home";
+                    if (response.user.role === "admin") {
+                        window.location.href = "index.php?page=user-manage";
+                    } else {
+                        window.location.href = "index.php?page=home";
+                    }
                 } else {
                     showToast("error", response.message);
                 }

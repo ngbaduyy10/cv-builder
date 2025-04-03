@@ -1,4 +1,9 @@
 $(document).ready(function() {
+    let filters = {
+        keyword: null,
+        sort: null,
+        type: null,
+    }
    const load_templates = () => {
        $.ajax({
            url: "/cv-builder/api/template.api.php",
@@ -6,6 +11,7 @@ $(document).ready(function() {
            dataType: "json",
            data: {
                action: "get_templates",
+               ...filters
            },
            success: function (response) {
                if (response.success) {

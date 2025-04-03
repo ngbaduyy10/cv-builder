@@ -1,3 +1,9 @@
+<?php
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+?>
+
 <div class="sidebar py-3 px-1 d-flex flex-column">
     <div class="sidebar-logo px-3">
         <div class="logo">Bright</div>
@@ -20,10 +26,10 @@
     </ul>
     <div class="px-3 py-2 profile">
         <div class="d-flex align-items-center gap-2">
-            <div class="image">D</div>
-            <div class="name">Duy Nguyen</div>
+            <div class="image"><?php echo strtoupper($_SESSION['user']['username'][0]); ?></div>
+            <div class="name"><?php echo $_SESSION['user']['username'] ?></div>
         </div>
-        <a href="#">
+        <a href="?page=logout">
             <i class='bx bx-log-out'></i>
         </a>
     </div>
