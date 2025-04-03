@@ -49,11 +49,10 @@ include __DIR__ . '/../../layouts/client/header.php';
                 </div>
             </div>
         </div>
-        <!-- Google Map với iframe -->
         <div class="col-lg-7">
             <div class="map-container rounded-3 overflow-hidden shadow-lg">
                 <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.5163767222098!2d106.7043759!3d10.7717064!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f3acf87eaeb%3A0xc969a1975f3be32a!2sBitexco%20Financial%20Tower!5e0!3m2!1svi!2s!4v1743093885005!5m2!1svi!2s"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.5752336113733!2d106.65769677539957!3d10.767183089381053!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f224d181179%3A0x43928509c3f4647f!2sXi%20Grand%20Court%20-%20Block%20A2!5e0!3m2!1sen!2sus!4v1743678323392!5m2!1sen!2sus"
                         class="map-container"
                         allowfullscreen=""
                         loading="lazy">
