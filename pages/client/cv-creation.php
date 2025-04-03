@@ -1,4 +1,9 @@
 <?php
+session_start();
+if (!isset($_SESSION['user'])) {
+    header('Location: index.php?page=login');
+    exit();
+}
 $template_id = $_GET['template_id'];
 $cv = __DIR__ . "/../../template/cv-{$template_id}.php";
 ?>
