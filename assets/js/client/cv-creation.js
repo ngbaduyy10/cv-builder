@@ -116,6 +116,9 @@ const showListData = (listData, listContainer) => {
 
 const displayCV = (userData) => {
     nameDsp.innerHTML = userData.firstname + " " + userData.lastname;
+    if (userData.image) {
+        imageDsp.src = userData.image;
+    }
     jobDsp.innerHTML = userData.job;
     phonenoDsp.innerHTML = userData.phoneno;
     emailDsp.innerHTML = userData.email;
@@ -215,7 +218,6 @@ const insertCV = (cvData) => {
     firstnameElem.value = cvData.firstname;
     lastnameElem.value = cvData.lastname;
     jobElem.value = cvData.job;
-    jobElem.image = cvData.image;
     addressElem.value = cvData.address;
     emailElem.value = cvData.email;
     phonenoElem.value = cvData.phoneno;
@@ -254,10 +256,14 @@ $(document).ready(function () {
     }
 });
 
-const createCV = () => {
+const createCV = async () => {
     const userData = getUserInput();
     const urlParams = new URLSearchParams(window.location.search);
     const templateId = urlParams.get('template_id');
+
+    if (imageElem.files[0]) {
+        userData.image = await uploadToCloudinary(imageElem.files[0]);
+    }
 
     $.ajax({
         url: '/cv-builder/api/cv.api.php',
@@ -306,11 +312,17 @@ const createCV = () => {
     });
 }
 
-const updateCV = () => {
+const updateCV = async () => {
     const userData = getUserInput();
     const urlParams = new URLSearchParams(window.location.search);
     const cvId = urlParams.get('cv_id');
     const templateId = urlParams.get('template_id');
+
+    if (imageElem.files[0]) {
+        userData.image = await uploadToCloudinary(imageElem.files[0]);
+    } else {
+        userData.image = imageDsp.src;
+    }
 
     $.ajax({
         url: '/cv-builder/api/cv.api.php',
@@ -376,4 +388,27 @@ const saveCV = () => {
             }
         }
     });
+}
+
+const uploadToCloudinary = async (file) => {
+    let imageUrl = "";
+    let formData = new FormData();
+    formData.append('file', file);
+    formData.append('upload_preset', 'cv_avatar');
+
+    await $.ajax({
+        url: `https://api.cloudinary.com/v1_1/doxm7rnpk/upload`,
+        method: 'POST',
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function(response) {
+            imageUrl = response.secure_url;
+        },
+        error: function(error) {
+            console.error("Error uploading image:", error);
+        }
+    });
+
+    return imageUrl;
 }

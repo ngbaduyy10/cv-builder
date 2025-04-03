@@ -12,9 +12,9 @@ class Cv extends Database {
     public function create_cv ($data) {
         $sql = "
             INSERT INTO cv 
-            (user_id, template_id, cvname, firstname, lastname, job, address, email, phoneno, summary, educations, projects, experiences, skills, achievements) 
+            (user_id, template_id, cvname, firstname, lastname, image, job, address, email, phoneno, summary, educations, projects, experiences, skills, achievements) 
             VALUES 
-            (:user_id, :template_id, :cvname, :firstname, :lastname, :job, :address, :email, :phoneno, :summary, :educations, :projects, :experiences, :skills, :achievements)
+            (:user_id, :template_id, :cvname, :firstname, :lastname, :image, :job, :address, :email, :phoneno, :summary, :educations, :projects, :experiences, :skills, :achievements)
         ";
         $stmt = $this->conn->prepare($sql);
         $stmt->bindParam(':user_id', $this->user_id);
@@ -22,6 +22,7 @@ class Cv extends Database {
         $stmt->bindParam(':cvname', $data['cvname']);
         $stmt->bindParam(':firstname', $data['firstname']);
         $stmt->bindParam(':lastname', $data['lastname']);
+        $stmt->bindParam(':image', $data['image']);
         $stmt->bindParam(':job', $data['job']);
         $stmt->bindParam(':address', $data['address']);
         $stmt->bindParam(':email', $data['email']);
@@ -43,6 +44,7 @@ class Cv extends Database {
             cvname = :cvname, 
             firstname = :firstname, 
             lastname = :lastname, 
+            image = :image,
             job = :job, 
             address = :address, 
             email = :email, 
@@ -60,6 +62,7 @@ class Cv extends Database {
         $stmt->bindParam(':cvname', $data['cvname']);
         $stmt->bindParam(':firstname', $data['firstname']);
         $stmt->bindParam(':lastname', $data['lastname']);
+        $stmt->bindParam(':image', $data['image']);
         $stmt->bindParam(':job', $data['job']);
         $stmt->bindParam(':address', $data['address']);
         $stmt->bindParam(':email', $data['email']);
