@@ -4,7 +4,6 @@
     grid-template-columns: 65% auto;
     aspect-ratio: 1 / 1.414;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
     font-family: "Poppins", sans-serif;
     padding: 4.2rem 3rem;
 }
