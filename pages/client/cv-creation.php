@@ -101,7 +101,20 @@ include __DIR__ . '/../../layouts/client/header.php';
                         </div>
                         <div class = "form-elem">
                             <label for = "" class = "form-label">Objectives</label>
-                            <textarea name = "summary" class = "form-control summary" id = "" onchange="generateCV()" rows="6"></textarea>
+
+                            <div class="toolbar">
+                                <div class="btn-toolbar">
+                                    <button type="button" onclick="formatDoc('bold')"><i class='bx bx-bold'></i></button>
+                                    <button type="button" onclick="formatDoc('underline')"><i class='bx bx-underline'></i></button>
+                                    <button type="button" onclick="formatDoc('italic')"><i class='bx bx-italic'></i></button>
+                                    <button type="button" onclick="formatDoc('insertOrderedList')"><i class='bx bx-list-ol'></i></button>
+                                    <button type="button" onclick="formatDoc('insertUnorderedList')"><i class='bx bx-list-ul'></i></button>
+                                </div>
+                            </div>
+
+                            <div id="summary-content" class="editor-content" contenteditable="true" spellcheck="false" oninput="syncEditorContent('summary-content', 'summary')"></div>
+
+                            <textarea name = "summary" class = "form-control summary d-none" id = "" onchange="generateCV()" rows="6"></textarea>
                             <span class="form-text"></span>
                         </div>
                     </div>
@@ -124,7 +137,19 @@ include __DIR__ . '/../../layouts/client/header.php';
                                         </div>
                                         <div class = "form-elem">
                                             <label for = "" class = "form-label">Description</label>
-                                            <textarea name = "achieve_description" class = "form-control achieve_description" rows="3" id = "" onchange="generateCV()"></textarea>
+
+                                            <div class="toolbar">
+                                                <div class="btn-toolbar">
+                                                    <button type="button" onclick="formatDoc('bold')"><i class='bx bx-bold'></i></button>
+                                                    <button type="button" onclick="formatDoc('underline')"><i class='bx bx-underline'></i></button>
+                                                    <button type="button" onclick="formatDoc('italic')"><i class='bx bx-italic'></i></button>
+                                                    <button type="button" onclick="formatDoc('insertOrderedList')"><i class='bx bx-list-ol'></i></button>
+                                                    <button type="button" onclick="formatDoc('insertUnorderedList')"><i class='bx bx-list-ul'></i></button>
+                                                </div>
+                                            </div>
+
+                                            <div id="achievement-content" class="editor-content" contenteditable="true" spellcheck="false" oninput="syncEditorContent('achievement-content', 'achieve_description')"></div>
+                                            <textarea name = "achieve_description" class = "form-control achieve_description d-none" rows="3" id = "" onchange="generateCV()"></textarea>
                                             <span class="form-text"></span>
                                         </div>
                                     </div>
@@ -167,7 +192,18 @@ include __DIR__ . '/../../layouts/client/header.php';
                                     </div>
                                     <div class = "form-elem">
                                         <label for = "" class = "form-label">Description</label>
-                                        <textarea name = "exp_description" class = "form-control exp_description" rows="6" id = "" onchange="generateCV()"></textarea>
+                                        <div class="toolbar">
+                                            <div class="btn-toolbar">
+                                                <button type="button" onclick="formatDoc('bold')"><i class='bx bx-bold'></i></button>
+                                                <button type="button" onclick="formatDoc('underline')"><i class='bx bx-underline'></i></button>
+                                                <button type="button" onclick="formatDoc('italic')"><i class='bx bx-italic'></i></button>
+                                                <button type="button" onclick="formatDoc('insertOrderedList')"><i class='bx bx-list-ol'></i></button>
+                                                <button type="button" onclick="formatDoc('insertUnorderedList')"><i class='bx bx-list-ul'></i></button>
+                                            </div>
+                                        </div>
+
+                                        <div id="experience-content" class="editor-content" contenteditable="true" spellcheck="false" oninput="syncEditorContent('experience-content', 'exp_description')"></div>
+                                        <textarea name = "exp_description" class = "form-control exp_description d-none" rows="6" id = "" onchange="generateCV()"></textarea>
                                         <span class="form-text"></span>
                                     </div>
 
@@ -232,7 +268,18 @@ include __DIR__ . '/../../layouts/client/header.php';
                                     </div>
                                     <div class = "form-elem">
                                         <label for = "" class = "form-label">Description</label>
-                                        <textarea name = "proj_description" class = "form-control proj_description" rows="6" id = "" onchange="generateCV()"></textarea>
+                                        <div class="toolbar">
+                                            <div class="btn-toolbar">
+                                                <button type="button" onclick="formatDoc('bold')"><i class='bx bx-bold'></i></button>
+                                                <button type="button" onclick="formatDoc('underline')"><i class='bx bx-underline'></i></button>
+                                                <button type="button" onclick="formatDoc('italic')"><i class='bx bx-italic'></i></button>
+                                                <button type="button" onclick="formatDoc('insertOrderedList')"><i class='bx bx-list-ol'></i></button>
+                                                <button type="button" onclick="formatDoc('insertUnorderedList')"><i class='bx bx-list-ul'></i></button>
+                                            </div>
+                                        </div>
+
+                                        <div id="project-content" class="editor-content" contenteditable="true" spellcheck="false" oninput="syncEditorContent('project-content', 'proj_description')"></div>
+                                        <textarea name = "proj_description" class = "form-control proj_description d-none" rows="6" id = "" onchange="generateCV()"></textarea>
                                         <span class="form-text"></span>
                                     </div>
                                     <button data-repeater-delete type = "button" class = "repeater-remove-btn">-</button>

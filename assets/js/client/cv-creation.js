@@ -11,6 +11,9 @@ let cvnameElem = mainForm.cvname,
     phonenoElem = mainForm.phoneno,
     summaryElem = mainForm.summary;
 
+// text editor elements
+let summaryEditorElem = document.querySelector("#summary-content");
+
 // display elements
 let nameDsp = document.getElementById('fullname_dsp'),
     imageDsp = document.getElementById('image_dsp'),
@@ -102,7 +105,7 @@ const showListData = (listData, listContainer) => {
             subItemElem.classList.add('preview-item-val');
             if (key.includes('start_date') && listItem[key]) {
                 subItemElem.innerHTML = `${formatDate(listItem[key])} - `;
-            } else if (key.includes('end_date') || key.includes('graduation_date') && listItem[key]) {
+            } else if ((key.includes('end_date') || key.includes('graduation_date')) && listItem[key]) {
                 subItemElem.innerHTML += `${formatDate(listItem[key])}`;
             } else {
                 subItemElem.innerHTML = `${listItem[key]}`;
@@ -194,15 +197,18 @@ const insertCV = (cvData) => {
         expOrganizationElem = document.querySelectorAll('.exp_organization'),
         expStartDateElem = document.querySelectorAll('.exp_start_date'),
         expEndDateElem = document.querySelectorAll('.exp_end_date'),
-        expDescriptionElem = document.querySelectorAll('.exp_description');
+        expDescriptionElem = document.querySelectorAll('.exp_description'),
+        expDescriptionEditorElem = document.querySelectorAll('#experience-content');
 
     let projTitleElem = document.querySelectorAll('.proj_title'),
-        projDescriptionElem = document.querySelectorAll('.proj_description');
+        projDescriptionElem = document.querySelectorAll('.proj_description'),
+        projDescriptionEditorElem = document.querySelectorAll('#project-content');
 
     let skillElem = document.querySelectorAll('.skill');
 
     let achievementsTitleElem = document.querySelectorAll('.achieve_title'),
-        achievementsDescriptionElem = document.querySelectorAll('.achieve_description');
+        achievementsDescriptionElem = document.querySelectorAll('.achieve_description'),
+        achievementsDescriptionEditorElem = document.querySelectorAll('#achievement-content');
 
     for (let i = 0; i < cvData.educations.length; i++) {
         eduSchoolElem[i].value = cvData.educations[i].edu_school;
@@ -217,11 +223,13 @@ const insertCV = (cvData) => {
         expStartDateElem[i].value = cvData.experiences[i].exp_start_date;
         expEndDateElem[i].value = cvData.experiences[i].exp_end_date;
         expDescriptionElem[i].value = cvData.experiences[i].exp_description;
+        expDescriptionEditorElem[i].innerHTML = cvData.experiences[i].exp_description;
     }
 
     for (let i = 0; i < cvData.projects.length; i++) {
         projTitleElem[i].value = cvData.projects[i].proj_title;
         projDescriptionElem[i].value = cvData.projects[i].proj_description;
+        projDescriptionEditorElem[i].innerHTML = cvData.projects[i].proj_description;
     }
 
     for (let i = 0; i < cvData.skills.length; i++) {
@@ -231,6 +239,7 @@ const insertCV = (cvData) => {
     for (let i = 0; i < cvData.achievements.length; i++) {
         achievementsTitleElem[i].value = cvData.achievements[i].achieve_title;
         achievementsDescriptionElem[i].value = cvData.achievements[i].achieve_description;
+        achievementsDescriptionEditorElem[i].innerHTML = cvData.achievements[i].achieve_description;
     }
 
 
@@ -242,6 +251,8 @@ const insertCV = (cvData) => {
     emailElem.value = cvData.email;
     phonenoElem.value = cvData.phoneno;
     summaryElem.value = cvData.summary;
+    summaryEditorElem.innerHTML = cvData.summary;
+
     displayCV(cvData);
 }
 
@@ -435,4 +446,27 @@ const uploadToCloudinary = async (file) => {
     });
 
     return imageUrl;
+}
+
+function formatDoc(cmd) {
+    const sel = window.getSelection();
+    if (sel.rangeCount > 0) {
+        if (cmd === 'bold') {
+            document.execCommand('bold');
+        } else if (cmd === 'underline') {
+            document.execCommand('underline');
+        } else if (cmd === 'insertOrderedList') {
+            document.execCommand('insertOrderedList');
+        } else if (cmd === 'insertUnorderedList') {
+            document.execCommand('insertUnorderedList');
+        }
+        syncEditorContent();
+    }
+}
+
+function syncEditorContent(editorId, textareaClass) {
+    const content = document.getElementById(editorId).innerHTML;
+    const textarea = document.querySelector(`textarea.${textareaClass}`);
+    textarea.value = content;
+    generateCV();
 }
