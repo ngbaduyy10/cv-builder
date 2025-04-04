@@ -1,4 +1,32 @@
 $(document).ready(function() {
+    //get data by id
+    const urlParams = new URLSearchParams(window.location.search);
+    const templateId = urlParams.get('template-id');
+
+    if (templateId) {
+        $.ajax({
+            url: "/cv-builder/api/template.api.php",
+            method: "GET",
+            dataType: "json",
+            data: {
+                action: "get_template_by_id",
+                id: templateId
+            },
+            success: function (response) {
+                if (response.success) {
+                    const template = response.data;
+                    $('#template-name').val(template.name);
+                    $('#template-description').val(template.description);
+                    $('#template-type').val(template.type_id);
+                    $('#preview-image').attr('src', template.preview_image);
+                }
+            },
+            error: function (xhr, status, error) {
+                console.error("Error loading template:", error);
+            }
+        });
+    }
+
     $.ajax({
         url: "/cv-builder/api/type.api.php",
         method: "GET",
@@ -35,11 +63,15 @@ $(document).ready(function() {
     //submit form
     $('#template-form').on('submit', async function(e) {
         e.preventDefault();
+        let previewImage = $('#preview-image').attr('src');
         const file = $('#template-image')[0].files[0];
-        const previewImage = await uploadToCloudinary(file);
+        if (file) {
+            previewImage = await uploadToCloudinary(file);
+        }
 
         const data = {
-            action: "create_template",
+            action: templateId ? "update_template" : "create_template",
+            id: templateId,
             name: $('#template-name').val(),
             description: $('#template-description').val(),
             type_id: $('#template-type').val(),
@@ -56,7 +88,7 @@ $(document).ready(function() {
                     Swal.fire({
                         position: "center",
                         icon: "success",
-                        title: "Created Template Successfully",
+                        title: response.message,
                         showConfirmButton: false,
                         timer: 1500,
                         customClass: {

@@ -14,6 +14,13 @@ function handleGetRequest () {
         if ($_GET['action'] === 'get_templates') {
             $result = (new Template())->get_templates($_GET['sort'], $_GET['keyword'], $_GET['type']);
             echo json_encode(['success' => true, 'data' => $result]);
+        } else if ($_GET['action'] === 'get_template_by_id') {
+            $result = (new Template())->get_template_by_id($_GET['id']);
+            if ($result) {
+                echo json_encode(['success' => true, 'data' => $result]);
+            } else {
+                echo json_encode(['success' => false, 'message' => 'Template not found']);
+            }
         } else {
             echo json_encode(['success' => false, 'message' => 'Invalid action']);
         }
@@ -30,6 +37,13 @@ function handlePostRequest () {
                 echo json_encode(['success' => true, 'message' => 'Template created successfully']);
             } else {
                 echo json_encode(['success' => false, 'message' => 'Failed to create template']);
+            }
+        } else if ($_POST['action'] === 'update_template') {
+            $result = (new Template())->update_template($_POST['id'], $_POST['name'], $_POST['description'], $_POST['preview_image'], $_POST['type_id']);
+            if ($result) {
+                echo json_encode(['success' => true, 'message' => 'Template updated successfully']);
+            } else {
+                echo json_encode(['success' => false, 'message' => 'Failed to update template']);
             }
         } else if ($_POST['action'] === 'delete_template') {
             $result = (new Template())->delete_template($_POST['id']);

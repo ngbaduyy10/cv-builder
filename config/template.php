@@ -45,12 +45,37 @@ class Template extends Database {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public function get_template_by_id($id) {
+        if (empty($id)) {
+            return false;
+        }
+        $sql = "SELECT * FROM template WHERE id = :id";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
     public function create_template($name, $description, $preview_image, $type_id) {
         if (empty($name) || empty($description) || empty($preview_image) || empty($type_id)) {
             return false;
         }
         $sql = "INSERT INTO template (name, description, preview_image, type_id) VALUES (:name, :description, :preview_image, :type_id)";
         $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':name', $name);
+        $stmt->bindParam(':description', $description);
+        $stmt->bindParam(':preview_image', $preview_image);
+        $stmt->bindParam(':type_id', $type_id);
+        return $stmt->execute();
+    }
+
+    public function update_template($id, $name, $description, $preview_image, $type_id) {
+        if (empty($id) || empty($name) || empty($description) || empty($preview_image) || empty($type_id)) {
+            return false;
+        }
+        $sql = "UPDATE template SET name = :name, description = :description, preview_image = :preview_image, type_id = :type_id WHERE id = :id";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':id', $id);
         $stmt->bindParam(':name', $name);
         $stmt->bindParam(':description', $description);
         $stmt->bindParam(':preview_image', $preview_image);

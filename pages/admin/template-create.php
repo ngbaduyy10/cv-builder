@@ -56,7 +56,7 @@ include __DIR__ . '/../../layouts/admin/sidebar.php';
             <div class="row">
                 <div class="form-group col-12 col-md-6">
                     <label for="template-image">Preview Image</label>
-                    <input type="file" class="form-control" id="template-image" accept="image/*" required>
+                    <input type="file" class="form-control" id="template-image" accept="image/*">
                 </div>
                 <div class="form-group col-12 col-md-6">
                     <label for="template-type">Type</label>
