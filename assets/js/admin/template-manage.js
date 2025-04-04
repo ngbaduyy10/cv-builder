@@ -21,7 +21,7 @@ $(document).ready(function() {
                             <div class="col-12 col-md-6 col-lg-4 col-xl-3">
                                 <div class="template-item p-4 h-100 d-flex flex-column">
                                     <img src="${template.preview_image}" alt="" class="w-100" />
-                                    <a href="?page=template-create&template-id=${template.id}" class="button button-edit">
+                                    <a href="?page=template-create&template_id=${template.id}" class="button button-edit">
                                         <i class='bx bxs-edit-alt'></i>
                                     </a>
                                     <button class="button button-delete" data-id="${template.id}">

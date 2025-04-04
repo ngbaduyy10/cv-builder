@@ -8,6 +8,8 @@ if (!isset($_SESSION['user'])) {
 }
 $template_id = $_GET['template_id'];
 $cv = __DIR__ . "/../../template/cv-{$template_id}.php";
+
+$cv_id = $_GET['cv_id'] ?? null;
 ?>
 
 <!DOCTYPE html>
@@ -39,6 +41,11 @@ include __DIR__ . '/../../layouts/client/header.php';
 <main class="cv-creation">
     <div class="container row gx-4">
         <div class="col-12 d-flex justify-content-end gap-3">
+            <?php if ($cv_id) { ?>
+                <button class="button button-save d-flex align-items-center gap-2" onclick="revertCV()"  id="revert-cv-btn">
+                    <i class='bx bx-redo'></i> Revert
+                </button>
+            <?php } ?>
             <button class="button button-save d-flex align-items-center gap-2" onclick="saveCV()"  id="save-cv-btn">
                 <i class='bx bxs-save'></i> Save
             </button>

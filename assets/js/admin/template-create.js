@@ -1,7 +1,7 @@
 $(document).ready(function() {
     //get data by id
     const urlParams = new URLSearchParams(window.location.search);
-    const templateId = urlParams.get('template-id');
+    const templateId = urlParams.get('template_id');
 
     if (templateId) {
         $.ajax({

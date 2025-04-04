@@ -7,7 +7,7 @@ if (!isset($_SESSION['user']['role']) || $_SESSION['user']['role'] !== 'admin') 
     exit();
 }
 
-$templateId = $_GET['template-id'] ?? null;
+$templateId = $_GET['template_id'] ?? null;
 ?>
 
 <!DOCTYPE html>

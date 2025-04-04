@@ -144,6 +144,26 @@ function previewImage(){
     }
 }
 
+const revertCV = () => {
+    Swal.fire({
+        title: "Do you want to revert the changes?",
+        showCancelButton: true,
+        confirmButtonText: "Revert",
+        customClass: {
+            popup : 'custom-swal-size'
+        }
+    }).then((result) => {
+        if (result.isConfirmed) {
+            const urlParams = new URLSearchParams(window.location.search);
+            const cvId = urlParams.get('cv_id');
+
+            if (cvId) {
+                fetchCV(cvId);
+            }
+        }
+    });
+}
+
 const printCV = () => {
     window.print();
 }
@@ -225,34 +245,38 @@ const insertCV = (cvData) => {
     displayCV(cvData);
 }
 
+const fetchCV = (cvId) => {
+    $.ajax({
+        url: '/cv-builder/api/cv.api.php',
+        method: 'GET',
+        dataType: 'json',
+        data: {
+            action: 'get_cv_by_id',
+            id: cvId
+        },
+        success: function(response){
+            if (response.success) {
+                const cvData = {
+                    ...response.data,
+                    educations: JSON.parse(response.data.educations),
+                    experiences: JSON.parse(response.data.experiences),
+                    projects: JSON.parse(response.data.projects),
+                    skills: JSON.parse(response.data.skills),
+                    achievements: JSON.parse(response.data.achievements),
+                };
+
+                insertCV(cvData);
+            }
+        }
+    });
+}
+
 $(document).ready(function () {
     const urlParams = new URLSearchParams(window.location.search);
     const cvId = urlParams.get('cv_id');
 
     if (cvId) {
-        $.ajax({
-            url: '/cv-builder/api/cv.api.php',
-            method: 'GET',
-            dataType: 'json',
-            data: {
-                action: 'get_cv_by_id',
-                id: cvId
-            },
-            success: function(response){
-                if (response.success) {
-                    const cvData = {
-                        ...response.data,
-                        educations: JSON.parse(response.data.educations),
-                        experiences: JSON.parse(response.data.experiences),
-                        projects: JSON.parse(response.data.projects),
-                        skills: JSON.parse(response.data.skills),
-                        achievements: JSON.parse(response.data.achievements),
-                    };
-
-                    insertCV(cvData);
-                }
-            }
-        });
+        fetchCV(cvId);
     }
 });
 
