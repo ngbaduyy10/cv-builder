@@ -221,3 +221,7 @@
     list-style: decimal;
     padding-left: 12px;
 }
+
+.preview-item-val span {
+    font-weight: 500!important;
+}

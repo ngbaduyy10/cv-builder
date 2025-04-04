@@ -112,8 +112,7 @@ include __DIR__ . '/../../layouts/client/header.php';
                                 </div>
                             </div>
 
-                            <div id="summary-content" class="editor-content" contenteditable="true" spellcheck="false" oninput="syncEditorContent('summary-content', 'summary')"></div>
-
+                            <div id="summary-content" class="editor-content" contenteditable="true" spellcheck="false"></div>
                             <textarea name = "summary" class = "form-control summary d-none" id = "" onchange="generateCV()" rows="6"></textarea>
                             <span class="form-text"></span>
                         </div>
@@ -148,7 +147,7 @@ include __DIR__ . '/../../layouts/client/header.php';
                                                 </div>
                                             </div>
 
-                                            <div id="achievement-content" class="editor-content" contenteditable="true" spellcheck="false" oninput="syncEditorContent('achievement-content', 'achieve_description')"></div>
+                                            <div id="achievement-content" class="editor-content" contenteditable="true" spellcheck="false"></div>
                                             <textarea name = "achieve_description" class = "form-control achieve_description d-none" rows="3" id = "" onchange="generateCV()"></textarea>
                                             <span class="form-text"></span>
                                         </div>
@@ -202,7 +201,7 @@ include __DIR__ . '/../../layouts/client/header.php';
                                             </div>
                                         </div>
 
-                                        <div id="experience-content" class="editor-content" contenteditable="true" spellcheck="false" oninput="syncEditorContent('experience-content', 'exp_description')"></div>
+                                        <div id="experience-content" class="editor-content" contenteditable="true" spellcheck="false"></div>
                                         <textarea name = "exp_description" class = "form-control exp_description d-none" rows="6" id = "" onchange="generateCV()"></textarea>
                                         <span class="form-text"></span>
                                     </div>
@@ -278,7 +277,7 @@ include __DIR__ . '/../../layouts/client/header.php';
                                             </div>
                                         </div>
 
-                                        <div id="project-content" class="editor-content" contenteditable="true" spellcheck="false" oninput="syncEditorContent('project-content', 'proj_description')"></div>
+                                        <div id="project-content" class="editor-content" contenteditable="true" spellcheck="false"></div>
                                         <textarea name = "proj_description" class = "form-control proj_description d-none" rows="6" id = "" onchange="generateCV()"></textarea>
                                         <span class="form-text"></span>
                                     </div>

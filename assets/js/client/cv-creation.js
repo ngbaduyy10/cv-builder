@@ -460,13 +460,12 @@ function formatDoc(cmd) {
         } else if (cmd === 'insertUnorderedList') {
             document.execCommand('insertUnorderedList');
         }
-        syncEditorContent();
     }
 }
-
-function syncEditorContent(editorId, textareaClass) {
-    const content = document.getElementById(editorId).innerHTML;
-    const textarea = document.querySelector(`textarea.${textareaClass}`);
-    textarea.value = content;
-    generateCV();
-}
+$(document).ready(function() {
+    $(document).on('input', '.editor-content', function() {
+        const textarea = $(this).closest('.form-elem').find('textarea');
+        textarea.val($(this).html());
+        generateCV();
+    })
+});
