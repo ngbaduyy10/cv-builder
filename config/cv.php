@@ -10,11 +10,15 @@ class Cv extends Database {
         $this->user_id = $_SESSION['user']['id'];
     }
     public function create_cv ($data) {
+        if (empty($data['template_id']) || empty($data['cvname']) || empty($data['cv_image'])) {
+            return false;
+        }
+
         $sql = "
             INSERT INTO cv 
-            (user_id, template_id, cvname, firstname, lastname, image, job, address, email, phoneno, summary, educations, projects, experiences, skills, achievements) 
+            (user_id, template_id, cvname, firstname, lastname, image, job, address, email, phoneno, summary, educations, projects, experiences, skills, achievements, cv_image) 
             VALUES 
-            (:user_id, :template_id, :cvname, :firstname, :lastname, :image, :job, :address, :email, :phoneno, :summary, :educations, :projects, :experiences, :skills, :achievements)
+            (:user_id, :template_id, :cvname, :firstname, :lastname, :image, :job, :address, :email, :phoneno, :summary, :educations, :projects, :experiences, :skills, :achievements, :cv_image)
         ";
         $stmt = $this->conn->prepare($sql);
         $stmt->bindParam(':user_id', $this->user_id);
@@ -33,6 +37,7 @@ class Cv extends Database {
         $stmt->bindParam(':experiences', $data['experiences']);
         $stmt->bindParam(':skills', $data['skills']);
         $stmt->bindParam(':achievements', $data['achievements']);
+        $stmt->bindParam(':cv_image', $data['cv_image']);
         $stmt->execute();
         return $this->conn->lastInsertId();
     }
@@ -54,7 +59,8 @@ class Cv extends Database {
             projects = :projects, 
             experiences = :experiences, 
             skills = :skills, 
-            achievements = :achievements 
+            achievements = :achievements, 
+            cv_image = :cv_image
             WHERE id = :id
         ";
         $stmt = $this->conn->prepare($sql);
@@ -73,13 +79,14 @@ class Cv extends Database {
         $stmt->bindParam(':experiences', $data['experiences']);
         $stmt->bindParam(':skills', $data['skills']);
         $stmt->bindParam(':achievements', $data['achievements']);
+        $stmt->bindParam(':cv_image', $data['cv_image']);
         $stmt->bindParam(':id', $data['id']);
         $stmt->execute();
         return true;
     }
     public function get_cv () {
         $sql = "
-            SELECT c.id, c.template_id, c.cvname, c.created_at, c.updated_at, t.name as template_name, t.preview_image
+            SELECT c.id, c.template_id, c.cvname, c.cv_image, c.created_at, c.updated_at, t.name as template_name, t.preview_image
             FROM cv c
             JOIN template t ON c.template_id = t.id
             WHERE c.user_id = :user_id

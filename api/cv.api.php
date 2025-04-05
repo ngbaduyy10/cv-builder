@@ -13,7 +13,11 @@ function handlePostRequest () {
     if (isset($_POST['action'])) {
         if ($_POST['action'] === 'create_cv') {
             $result = (new Cv())->create_cv($_POST);
-            echo json_encode(['success' => true, 'data' => $result, 'message' => 'CV saved successfully']);
+            if (!$result) {
+                echo json_encode(['success' => false, 'message' => 'Failed to create CV']);
+            } else {
+                echo json_encode(['success' => true, 'data' => $result, 'message' => 'CV saved successfully']);
+            }
         } else if ($_POST['action'] === 'update_cv') {
             $result = (new Cv())->update_cv($_POST);
             echo json_encode(['success' => true, 'data' => $result, 'message' => 'CV updated successfully']);

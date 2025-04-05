@@ -300,6 +300,8 @@ const createCV = async () => {
         userData.image = await uploadToCloudinary(imageElem.files[0]);
     }
 
+    const cvImage = await getCVImage();
+
     $.ajax({
         url: '/cv-builder/api/cv.api.php',
         method: 'POST',
@@ -307,6 +309,7 @@ const createCV = async () => {
         data: {
             action: 'create_cv',
             template_id: templateId,
+            cv_image: cvImage,
             ...userData,
             educations: JSON.stringify(userData.educations),
             experiences: JSON.stringify(userData.experiences),
@@ -355,9 +358,11 @@ const updateCV = async () => {
 
     if (imageElem.files[0]) {
         userData.image = await uploadToCloudinary(imageElem.files[0]);
-    } else {
+    } else if (imageDsp) {
         userData.image = imageDsp.src;
     }
+
+    const cvImage = await getCVImage();
 
     $.ajax({
         url: '/cv-builder/api/cv.api.php',
@@ -367,6 +372,7 @@ const updateCV = async () => {
             action: 'update_cv',
             id: cvId,
             template_id: templateId,
+            cv_image: cvImage,
             ...userData,
             educations: JSON.stringify(userData.educations),
             experiences: JSON.stringify(userData.experiences),
@@ -422,6 +428,36 @@ const saveCV = () => {
                 createCV();
             }
         }
+    });
+}
+
+const getCVImage = async () => {
+    //fix the preview-sc size
+    const previewSc = document.querySelector("#preview-sc");
+    previewSc.style.width = "637.5px";
+
+    // Create a promise to wrap html2canvas usage
+    return new Promise((resolve, reject) => {
+        html2canvas(document.querySelector("#preview-sc"), {
+            logging: true,
+            useCORS: true,
+            allowTaint: true,
+        }).then(canvas => {
+            canvas.toBlob(async (blob) => {
+                try {
+                    const cvImage = await uploadToCloudinary(blob);
+                    resolve(cvImage);
+                } catch (err) {
+                    reject(new Error("Error uploading canvas image to Cloudinary"));
+                }
+            });
+        }).catch(err => {
+            reject(new Error("Error generating canvas image"));
+        }).finally(
+            () => {
+                previewSc.style.width = "";
+            }
+        );
     });
 }
 

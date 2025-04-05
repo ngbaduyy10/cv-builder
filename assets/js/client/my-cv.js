@@ -24,7 +24,7 @@ $(document).ready(function () {
                             let cvHtml = `
                                 <div class="col-12 col-md-6 col-lg-4 col-xl-3">
                                     <div class="cv-item p-4 h-100 d-flex flex-column">
-                                        <img src="${cv.preview_image}" alt="" class="w-100" />
+                                        <img src="${cv.cv_image}" alt="${cv.cvname}" />
                                         <a href="?page=cv-creation&template_id=${cv.template_id}&cv_id=${cv.id}" class="button button-edit">
                                             <i class='bx bxs-edit-alt'></i>
                                         </a>
