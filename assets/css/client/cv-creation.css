@@ -30,6 +30,15 @@
     opacity: 1;
 }
 
+.cv-creation .custom-width {
+    max-width: 637.5px;
+}
+@media (min-width: 1200px) {
+    .cv-creation .custom-width {
+        width: 50%;
+    }
+}
+
 .cv-creation #about-sc {
     margin: 10px 0;
 }
