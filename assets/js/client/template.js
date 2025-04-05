@@ -1,5 +1,6 @@
 $(document).ready(function () {
     let isLogin = false;
+    let maxCVReached = false;
     $.ajax({
         url: "/cv-builder/api/auth.api.php",
         method: "GET",
@@ -16,6 +17,22 @@ $(document).ready(function () {
             console.error("Error checking authentication:", error);
         }
     })
+
+    $.ajax({
+        url: "/cv-builder/api/cv.api.php",
+        method: "GET",
+        dataType: "json",
+        data: {
+            action: "get_cv",
+        },
+        success: function (response) {
+            if (response.success) {
+                if (response.data.length >= 3) {
+                    maxCVReached = true;
+                }
+            }
+        },
+    });
 
     let filters = {
         sort: null,
@@ -68,6 +85,19 @@ $(document).ready(function () {
                 position: 'top-end',
                 icon: "warning",
                 title: "Please login to use this template",
+                showConfirmButton: false,
+                showCloseButton: true,
+                timer: 3000,
+                customClass: {
+                    popup: 'toast-size',
+                }
+            });
+        } else if (maxCVReached) {
+            Swal.fire({
+                toast: true,
+                position: 'top-end',
+                icon: "warning",
+                title: "You have reached the maximum number of CVs",
                 showConfirmButton: false,
                 showCloseButton: true,
                 timer: 3000,

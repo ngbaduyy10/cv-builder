@@ -31,8 +31,14 @@
 }
 
 .cv-creation .custom-width {
-    max-width: 637.5px;
+    width: 100%;
 }
+@media (min-width: 768px) {
+    .cv-creation .custom-width {
+        width: 637.5px;
+    }
+}
+
 @media (min-width: 1200px) {
     .cv-creation .custom-width {
         width: 50%;
