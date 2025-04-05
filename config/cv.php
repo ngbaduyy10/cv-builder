@@ -139,4 +139,23 @@ class Cv extends Database {
         $stmt->execute();
         return true;
     }
+
+    public function get_public_cv($id) {
+        $sql = "
+            SELECT cv_image
+            FROM cv 
+            WHERE id = :id AND is_public = TRUE
+        ";
+
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        if ($result) {
+            return $result['cv_image'];
+        } else {
+            return null;
+        }
+
+    }
 }

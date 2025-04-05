@@ -47,6 +47,13 @@ function handleGetRequest () {
             } else {
                 echo json_encode(['success' => false, 'message' => 'ID not provided']);
             }
+        } else if ($_GET['action'] === 'get_public_cv') {
+            $result = (new Cv())->get_public_cv($_GET['id']);
+            if ($result) {
+                echo json_encode(['success' => true, 'data' => $result]);
+            } else {
+                echo json_encode(['success' => false, 'message' => 'CV not found or not public']);
+            }
         } else {
             echo json_encode(['success' => false, 'message' => 'Invalid action']);
         }
