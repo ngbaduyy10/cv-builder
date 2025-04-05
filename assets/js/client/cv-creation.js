@@ -296,6 +296,23 @@ const createCV = async () => {
     const urlParams = new URLSearchParams(window.location.search);
     const templateId = urlParams.get('template_id');
 
+    //check cv name
+    if (userData.cvname === "") {
+        Swal.fire({
+            toast: true,
+            position: 'top-end',
+            icon: 'error',
+            title: "Please enter a CV name",
+            showConfirmButton: false,
+            showCloseButton: true,
+            timer: 2000,
+            customClass: {
+                popup: 'toast-size',
+            }
+        });
+        return;
+    }
+
     if (imageElem.files[0]) {
         userData.image = await uploadToCloudinary(imageElem.files[0]);
     }
@@ -355,6 +372,22 @@ const updateCV = async () => {
     const urlParams = new URLSearchParams(window.location.search);
     const cvId = urlParams.get('cv_id');
     const templateId = urlParams.get('template_id');
+
+    if (userData.cvname === "") {
+        Swal.fire({
+            toast: true,
+            position: 'top-end',
+            icon: 'error',
+            title: "Please enter a CV name",
+            showConfirmButton: false,
+            showCloseButton: true,
+            timer: 2000,
+            customClass: {
+                popup: 'toast-size',
+            }
+        });
+        return;
+    }
 
     if (imageElem.files[0]) {
         userData.image = await uploadToCloudinary(imageElem.files[0]);
