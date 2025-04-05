@@ -20,6 +20,7 @@ $(document).ready(function () {
                             </div>
                         `);
                     } else {
+                        $('#cv-list').empty();
                         response.data.forEach((cv) => {
                             let cvHtml = `
                                 <div class="col-12 col-md-6 col-lg-4 col-xl-3">
@@ -46,6 +47,8 @@ $(document).ready(function () {
                                                 <p class="desc">Last updated at ${cv.updated_at}</p>
                                             </div>
                                         </div>
+                                        <button class="button button-public mt-4" id="button-public" data-cv-id="${cv.id}" data-cv-public="${cv.is_public}">${cv.is_public ? "Private CV" : "Public CV"}</button>
+                                        <button class="button button-copy-url mt-2 ${cv.is_public ? "" : "d-none"}" data-cv-id="${cv.id}">Copy CV URL</button>
                                     </div>
                                 </div>
                             `;
@@ -98,7 +101,7 @@ $(document).ready(function () {
                                 }
                             });
                             setTimeout(() => {
-                                window.location.reload();
+                                get_cv();
                             }, 1500);
                         }
                     },
@@ -106,6 +109,65 @@ $(document).ready(function () {
                         console.error("Error deleting cv:", error);
                     }
                 });
+            }
+        });
+    });
+
+    //copy url
+    $(document).on('click', '.button-copy-url', function () {
+        const cvId = $(this).data('cv-id');
+        const cvUrl = `${window.location.origin}/cv-builder/cv.php&id=${cvId}`;
+        navigator.clipboard.writeText(cvUrl).then(() => {
+            Swal.fire({
+                toast: true,
+                position: 'top-end',
+                icon: 'success',
+                title: 'CV URL copied to clipboard!',
+                showConfirmButton: false,
+                showCloseButton: true,
+                timer: 3000,
+                customClass: {
+                    popup: 'toast-size',
+                }
+            });
+        }).catch(err => {
+            console.error('Error copying URL:', err);
+        });
+    });
+
+    //change public status
+    $(document).on('click', '#button-public', function () {
+        const cv_id = $(this).data('cv-id');
+        const is_public = $(this).data('cv-public');
+        console.log(cv_id, is_public);
+        $.ajax({
+            url: "/cv-builder/api/cv.api.php",
+            method: "POST",
+            dataType: "json",
+            data: {
+                action: "change_public_status",
+                id: cv_id,
+                status: !is_public,
+            },
+            success: function (response) {
+                if (response.success) {
+                    get_cv();
+                    Swal.fire({
+                        toast: true,
+                        position: 'top-end',
+                        icon: 'success',
+                        title: `CV is now ${!is_public ? "Public" : "Private"}`,
+                        showConfirmButton: false,
+                        showCloseButton: true,
+                        timer: 3000,
+                        customClass: {
+                            popup: 'toast-size',
+                        }
+                    });
+                }
+            },
+            error: function (xhr, status, error) {
+                console.error("Error changing public status:", error);
             }
         });
     });

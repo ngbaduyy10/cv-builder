@@ -109,3 +109,18 @@
     border-radius: 10px;
     padding: 10px 20px;
 }
+
+.my-cv .button-public {
+    border: none;
+    border-radius: 10px;
+    line-height: 20px;
+    padding: 6px 20px;
+}
+
+.my-cv .button-copy-url {
+    border-radius: 10px;
+    line-height: 20px;
+    padding: 6px 20px;
+    background-color: var(--background-color);
+    color: var(--main-color);
+}

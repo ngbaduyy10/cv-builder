@@ -86,7 +86,7 @@ class Cv extends Database {
     }
     public function get_cv () {
         $sql = "
-            SELECT c.id, c.template_id, c.cvname, c.cv_image, c.created_at, c.updated_at, t.name as template_name, t.preview_image
+            SELECT c.id, c.template_id, c.cvname, c.cv_image, c.is_public, c.created_at, c.updated_at, t.name as template_name, t.preview_image
             FROM cv c
             JOIN template t ON c.template_id = t.id
             WHERE c.user_id = :user_id
@@ -114,6 +114,26 @@ class Cv extends Database {
             DELETE FROM cv 
             WHERE id = :id
         ";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+        return true;
+    }
+
+    public function change_public_status ($id, $status) {
+        if ($status === 'true') {
+            $sql = "
+                UPDATE cv 
+                SET is_public = TRUE
+                WHERE id = :id
+            ";
+        } else {
+            $sql = "
+                UPDATE cv 
+                SET is_public = FALSE
+                WHERE id = :id
+            ";
+        }
         $stmt = $this->conn->prepare($sql);
         $stmt->bindParam(':id', $id);
         $stmt->execute();
