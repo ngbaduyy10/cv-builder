@@ -17,7 +17,9 @@ $(document).ready(function() {
                     const template = response.data;
                     $('#template-name').val(template.name);
                     $('#template-description').val(template.description);
-                    $('#template-type').val(template.type_id);
+                    setTimeout(() => {
+                        $('#template-type').val(template.type_id);
+                    }, 100);
                     $('#preview-image').attr('src', template.preview_image);
                 }
             },

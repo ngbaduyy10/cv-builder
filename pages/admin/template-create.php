@@ -61,6 +61,7 @@ include __DIR__ . '/../../layouts/admin/sidebar.php';
                 <div class="form-group col-12 col-md-6">
                     <label for="template-type">Type</label>
                     <select class="form-select" id="template-type" required>
+                        <option value="" disabled selected>Select template type</option>
                     </select>
                 </div>
             </div>

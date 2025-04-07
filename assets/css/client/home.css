@@ -3,7 +3,6 @@
 }
 
 .hero {
-    background: var(--background-color);
     padding: 56px 0 65px;
 }
 .hero .body {
