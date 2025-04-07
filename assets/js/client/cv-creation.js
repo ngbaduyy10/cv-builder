@@ -258,7 +258,7 @@ const insertCV = (cvData) => {
 
 const fetchCV = (cvId) => {
     $.ajax({
-        url: '/cv-builder/api/cv.api.php',
+        url: 'api/cv.api.php',
         method: 'GET',
         dataType: 'json',
         data: {
@@ -320,7 +320,7 @@ const createCV = async () => {
     const cvImage = await getCVImage();
 
     $.ajax({
-        url: '/cv-builder/api/cv.api.php',
+        url: 'api/cv.api.php',
         method: 'POST',
         dataType: "json",
         data: {
@@ -347,7 +347,7 @@ const createCV = async () => {
                     }
                 });
                 setTimeout(() => {
-                    window.location.href = '/cv-builder/index.php?page=my-cv';
+                    window.location.href = 'index.php?page=my-cv';
                 }, 1500);
             } else {
                 Swal.fire({
@@ -398,7 +398,7 @@ const updateCV = async () => {
     const cvImage = await getCVImage();
 
     $.ajax({
-        url: '/cv-builder/api/cv.api.php',
+        url: 'api/cv.api.php',
         method: 'POST',
         dataType: "json",
         data: {

@@ -1,7 +1,7 @@
 $(document).ready(function() {
     function load_users() {
         $.ajax({
-            url: "/cv-builder/api/user.api.php",
+            url: "api/user.api.php",
             method: "GET",
             dataType: "json",
             data: {

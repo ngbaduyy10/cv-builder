@@ -1,7 +1,7 @@
 $(document).ready(function () {
     const get_cv = () => {
         $.ajax({
-            url: "/cv-builder/api/cv.api.php",
+            url: "api/cv.api.php",
             method: "GET",
             dataType: "json",
             data: {
@@ -81,7 +81,7 @@ $(document).ready(function () {
             if (result.isConfirmed) {
                 let cv_id = $(this).data('cv-id');
                 $.ajax({
-                    url: "/cv-builder/api/cv.api.php",
+                    url: "api/cv.api.php",
                     method: "POST",
                     dataType: "json",
                     data: {
@@ -141,7 +141,7 @@ $(document).ready(function () {
         const is_public = $(this).data('cv-public');
         console.log(cv_id, is_public);
         $.ajax({
-            url: "/cv-builder/api/cv.api.php",
+            url: "api/cv.api.php",
             method: "POST",
             dataType: "json",
             data: {

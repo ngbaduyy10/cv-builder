@@ -3,7 +3,7 @@ $(document).ready(function () {
     const cvId = urlParams.get('id');
     //get_public_cv
     $.ajax({
-        url: "/cv-builder/api/cv.api.php",
+        url: "api/cv.api.php",
         method: "GET",
         dataType: "json",
         data: {

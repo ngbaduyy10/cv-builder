@@ -26,7 +26,7 @@ if (!$cvId) {
 </head>
 <body>
 
-<main class="d-flex justify-content-center align-items-center">
+<main class="d-flex justify-content-center align-items-center my-5">
     <img src="" alt="CV Image" class="img-fluid" id="cv-image" style="box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);" />
 </main>
 

@@ -8,7 +8,7 @@ $(document).ready(function () {
         const email = $("#email").val();
 
         $.ajax({
-            url: "/cv-builder/api/auth.api.php",
+            url: "api/auth.api.php",
             method: "POST",
             dataType: "json",
             data: {
@@ -37,7 +37,7 @@ $(document).ready(function () {
         const password = $("#password").val();
 
         $.ajax({
-            url: "/cv-builder/api/auth.api.php",
+            url: "api/auth.api.php",
             method: "POST",
             dataType: "json",
             data: {

@@ -2,7 +2,7 @@ $(document).ready(function () {
     let isLogin = false;
     let maxCVReached = false;
     $.ajax({
-        url: "/cv-builder/api/auth.api.php",
+        url: "api/auth.api.php",
         method: "GET",
         dataType: "json",
         data: {
@@ -19,7 +19,7 @@ $(document).ready(function () {
     })
 
     $.ajax({
-        url: "/cv-builder/api/cv.api.php",
+        url: "api/cv.api.php",
         method: "GET",
         dataType: "json",
         data: {
@@ -41,7 +41,7 @@ $(document).ready(function () {
     }
     const getTemplate = () => {
         $.ajax({
-            url: "/cv-builder/api/template.api.php",
+            url: "api/template.api.php",
             method: "GET",
             dataType: "json",
             data: {
@@ -107,7 +107,7 @@ $(document).ready(function () {
             });
         } else {
            const template_id = $(this).data("id");
-           window.location.href = `/cv-builder/index.php?page=cv-creation&template_id=${template_id}`;
+           window.location.href = `index.php?page=cv-creation&template_id=${template_id}`;
         }
     });
 
@@ -128,7 +128,7 @@ $(document).ready(function () {
 
     const getType = () => {
         $.ajax({
-            url: "/cv-builder/api/type.api.php",
+            url: "api/type.api.php",
             method: "GET",
             dataType: "json",
             data: {

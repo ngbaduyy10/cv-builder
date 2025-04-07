@@ -5,7 +5,7 @@ $(document).ready(function() {
 
     if (templateId) {
         $.ajax({
-            url: "/cv-builder/api/template.api.php",
+            url: "api/template.api.php",
             method: "GET",
             dataType: "json",
             data: {
@@ -30,7 +30,7 @@ $(document).ready(function() {
     }
 
     $.ajax({
-        url: "/cv-builder/api/type.api.php",
+        url: "api/type.api.php",
         method: "GET",
         dataType: "json",
         data: {
@@ -81,7 +81,7 @@ $(document).ready(function() {
         }
 
         $.ajax({
-            url: "/cv-builder/api/template.api.php",
+            url: "api/template.api.php",
             method: "POST",
             dataType: "json",
             data: data,
@@ -98,7 +98,7 @@ $(document).ready(function() {
                         }
                     });
                     setTimeout(() => {
-                        window.location.href = '/cv-builder/index.php?page=template-manage';
+                        window.location.href = 'index.php?page=template-manage';
                     }, 1500);
                 } else {
                     Swal.fire({

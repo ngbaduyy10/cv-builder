@@ -6,7 +6,7 @@ $(document).ready(function() {
     }
    const load_templates = () => {
        $.ajax({
-           url: "/cv-builder/api/template.api.php",
+           url: "api/template.api.php",
            method: "GET",
            dataType: "json",
            data: {
@@ -63,7 +63,7 @@ $(document).ready(function() {
         }).then((result) => {
             if (result.isConfirmed) {
                 $.ajax({
-                    url: "/cv-builder/api/template.api.php",
+                    url: "api/template.api.php",
                     method: "POST",
                     dataType: "json",
                     data: {
