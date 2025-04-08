@@ -291,27 +291,9 @@ $(document).ready(function () {
     }
 });
 
-const createCV = async () => {
-    const userData = getUserInput();
+const createCV = async (userData) => {
     const urlParams = new URLSearchParams(window.location.search);
     const templateId = urlParams.get('template_id');
-
-    //check cv name
-    if (userData.cvname === "") {
-        Swal.fire({
-            toast: true,
-            position: 'top-end',
-            icon: 'error',
-            title: "Please enter a CV name",
-            showConfirmButton: false,
-            showCloseButton: true,
-            timer: 2000,
-            customClass: {
-                popup: 'toast-size',
-            }
-        });
-        return;
-    }
 
     if (imageElem.files[0]) {
         userData.image = await uploadToCloudinary(imageElem.files[0]);
@@ -367,27 +349,10 @@ const createCV = async () => {
     });
 }
 
-const updateCV = async () => {
-    const userData = getUserInput();
+const updateCV = async (userData) => {
     const urlParams = new URLSearchParams(window.location.search);
     const cvId = urlParams.get('cv_id');
     const templateId = urlParams.get('template_id');
-
-    if (userData.cvname === "") {
-        Swal.fire({
-            toast: true,
-            position: 'top-end',
-            icon: 'error',
-            title: "Please enter a CV name",
-            showConfirmButton: false,
-            showCloseButton: true,
-            timer: 2000,
-            customClass: {
-                popup: 'toast-size',
-            }
-        });
-        return;
-    }
 
     if (imageElem.files[0]) {
         userData.image = await uploadToCloudinary(imageElem.files[0]);
@@ -444,6 +409,24 @@ const updateCV = async () => {
 }
 
 const saveCV = () => {
+    const userData = getUserInput();
+
+    if (userData.cvname === "") {
+        Swal.fire({
+            toast: true,
+            position: 'top-end',
+            icon: 'error',
+            title: "Please enter a CV name",
+            showConfirmButton: false,
+            showCloseButton: true,
+            timer: 2000,
+            customClass: {
+                popup: 'toast-size',
+            }
+        });
+        return;
+    }
+
     Swal.fire({
         title: "Do you want to save the changes?",
         showCancelButton: true,
@@ -451,15 +434,24 @@ const saveCV = () => {
         customClass: {
             popup : 'custom-swal-size'
         }
-    }).then((result) => {
+    }).then(async (result) => {
         if (result.isConfirmed) {
+            //set button to loading
+            const saveBtn = document.querySelector("#save-cv-btn");
+            saveBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i>';
+            saveBtn.setAttribute("disabled", "disabled");
+
             const urlParams = new URLSearchParams(window.location.search);
             const cvId = urlParams.get('cv_id');
             if (cvId) {
-                updateCV();
+                await updateCV(userData);
             } else {
-                createCV();
+                await createCV(userData);
             }
+
+            //reset button
+            saveBtn.innerHTML = `<i class='bx bxs-save'></i> Save`;
+            saveBtn.removeAttribute("disabled");
         }
     });
 }

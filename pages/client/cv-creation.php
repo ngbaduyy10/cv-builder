@@ -49,7 +49,7 @@ include __DIR__ . '/../../layouts/client/header.php';
                     <i class='bx bx-redo'></i> Revert
                 </button>
             <?php } ?>
-            <button class="button button-save d-flex align-items-center gap-2" onclick="saveCV()"  id="save-cv-btn">
+            <button class="button button-save d-flex align-items-center justify-content-center gap-2" onclick="saveCV()"  id="save-cv-btn">
                 <i class='bx bxs-save'></i> Save
             </button>
             <button class="button button-print d-flex align-items-center gap-2" onclick="printCV()">

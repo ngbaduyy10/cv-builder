@@ -95,6 +95,6 @@ include __DIR__ . '/../../layouts/admin/sidebar.php';
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
 
 <script src="assets/js/admin/admin.js"></script>
-<script src="assets/js/admin/template-create.js"></script>
+<script src="assets/js/admin/template-create.js" type="module"></script>
 </body>
 </html>
