@@ -7,7 +7,7 @@ class GoogleAuth {
         $this->client = new Google_Client();
         $this->client->setClientId("55143665840-eqmg4v11ingrvcu745d5o405pfhmbvsq.apps.googleusercontent.com");
         $this->client->setClientSecret("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");
-        $this->client->setRedirectUri("http://localhost/cv-builder/redirect.php");
+        $this->client->setRedirectUri("https://bright-cv-5dd136e7967b.herokuapp.com/redirect.php");
         $this->client->addScope(["email", "profile"]);
     }
 
