@@ -467,7 +467,8 @@ const saveCV = () => {
 const getCVImage = async () => {
     //fix the preview-sc size
     const previewSc = document.querySelector("#preview-sc");
-    previewSc.style.width = "637.5px";
+    previewSc.style.width = "793.5px";
+    document.documentElement.style.fontSize = "76%";
 
     // Create a promise to wrap html2canvas usage
     return new Promise((resolve, reject) => {
@@ -489,6 +490,7 @@ const getCVImage = async () => {
         }).finally(
             () => {
                 previewSc.style.width = "";
+                document.documentElement.style.fontSize = "62.5%";
             }
         );
     });
