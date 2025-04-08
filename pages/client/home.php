@@ -42,11 +42,11 @@ include __DIR__ . '/../../layouts/client/header.php';
                     <p class="desc">
                         Unlock your career potential with our easy-to-use CV builder. Whether you're starting fresh or updating your professional profile, our platform guides you through every step of creating a standout CV that highlights your skills, experience, and achievements. With customizable templates and expert tips, we make job applications a breeze. Start building your future today—no experience needed!
                     </p>
-                    <div class="d-flex align-items-center gap-3">
-                        <a href="?page=template" class="button button-cta">See Templates</a>
+                    <div class="d-flex flex-column flex-sm-row align-items-start align-items-sm-center gap-3 mt-5">
+                        <a href="?page=template" class="button button-cta">View Templates</a>
                         <a href="?page=register" class="button button-sign-up">Sign Up</a>
                     </div>
-                    <p class="desc desc1">Recent engagement</p>
+                    <p class="desc mt-5">Recent engagement</p>
                     <p class="desc desc2">
                         <strong>100+</strong>Job Seekers<strong>20+</strong>Templates
                     </p>

@@ -29,14 +29,12 @@
     text-align: justify;
 }
 .hero .button-cta {
-    margin-top: 38px;
-    min-width: 170px;
+    min-width: 180px;
     line-height: 64px;
     font-size: 18px;
     background: var(--main-color);
 }
 .hero .button-sign-up {
-    margin-top: 38px;
     min-width: 160px;
     line-height: 64px;
     font-size: 18px;
@@ -45,7 +43,7 @@
     border: 1px solid black;
 }
 .hero .content-block .desc1 {
-    margin-top: 48px;
+    margin-top: 40px;
 }
 .hero .content-block .desc2 {
     margin-top: 8px;
