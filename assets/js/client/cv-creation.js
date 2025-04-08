@@ -458,9 +458,8 @@ const saveCV = () => {
 
 const getCVImage = async () => {
     //fix the preview-sc size
-    const previewSc = document.querySelector("#preview-sc");
-    previewSc.style.width = "793.5px";
-    document.documentElement.style.fontSize = "76%";
+    $('#about-sc').css('display', 'none');
+    $('#preview-sc').css('width', '637.5px');
 
     // Create a promise to wrap html2canvas usage
     return new Promise((resolve, reject) => {
@@ -481,8 +480,9 @@ const getCVImage = async () => {
             reject(new Error("Error generating canvas image"));
         }).finally(
             () => {
-                previewSc.style.width = "";
-                document.documentElement.style.fontSize = "62.5%";
+                //fix the preview-sc size
+                $('#about-sc').css('display', 'block');
+                $('#preview-sc').css('width', '');
             }
         );
     });
