@@ -14,7 +14,7 @@ $(document).ready(function () {
             if (response.success) {
                 $("#cv-image").attr("src", response.data);
             } else {
-                window.location.href = "/cv-builder/index.php?page=404";
+                window.location.href = "index.php?page=404";
             }
         }
     });
