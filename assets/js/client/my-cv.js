@@ -116,7 +116,7 @@ $(document).ready(function () {
     //copy url
     $(document).on('click', '.button-copy-url', function () {
         const cvId = $(this).data('cv-id');
-        const cvUrl = `${window.location.origin}/cv-builder/cv.php?id=${cvId}`;
+        const cvUrl = `${window.location.origin}/cv.php?id=${cvId}`;
         navigator.clipboard.writeText(cvUrl).then(() => {
             Swal.fire({
                 toast: true,
