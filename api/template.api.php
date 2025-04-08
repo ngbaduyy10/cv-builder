@@ -21,6 +21,9 @@ function handleGetRequest () {
             } else {
                 echo json_encode(['success' => false, 'message' => 'Template not found']);
             }
+        } else if ($_GET['action'] === 'get_ex_template') {
+            $result = (new Template())->get_ex_template();
+            echo json_encode(['success' => true, 'data' => $result]);
         } else {
             echo json_encode(['success' => false, 'message' => 'Invalid action']);
         }

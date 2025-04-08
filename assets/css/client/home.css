@@ -60,3 +60,106 @@
 .hero .content-block .desc2 strong:nth-child(2) {
     margin-left: 22px;
 }
+
+.feature {
+    padding: 56px 0 65px;
+    background-color: var(--background-color);
+}
+
+.feature .title {
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 1.17;
+    letter-spacing: -0.8px;
+    text-align: center;
+    margin-bottom: 42px;
+}
+
+.feature img {
+    width: 100%;
+    height: auto;
+}
+
+
+.feature .label {
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.17;
+    letter-spacing: -0.8px;
+    color: #171100;
+}
+
+.feature .desc {
+    font-size: 1.8rem;
+    line-height: 1.47;
+    color: #5f5b53;
+}
+
+.listing {
+    padding: 56px 0 65px;
+}
+
+.listing .title {
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 1.17;
+    letter-spacing: -0.8px;
+    text-align: center;
+}
+
+.listing .desc {
+    padding: 0 4rem;
+    font-size: 1.8rem;
+    line-height: 1.67;
+    text-align: center;
+    color: #5f5b53;
+}
+
+.listing .template-list .template-item {
+    position: relative;
+    overflow: hidden;
+    background-color: var(--background-color);
+}
+
+.listing .template-list .template-item img:hover {
+    box-shadow: 0 0 16px rgba(0, 0, 0, 0.5);
+}
+
+.listing .template-list .template-item .button-use-template {
+    display: none;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 50%;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    line-height: 30px;
+    font-size: 16px;
+    border-radius: 10px;
+    transition: background-color 0.3s;
+}
+
+.listing .template-list .template-item:hover .button-use-template {
+    display: block;
+}
+
+.listing .template-list .template-item .button-use-template:hover {
+    opacity: 1;
+}
+
+.listing .template-list .template-item .title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: black;
+}
+
+.listing .template-list .template-item .desc {
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: #6c757d;
+    line-height: 1.2;
+    margin: 0;
+}
+

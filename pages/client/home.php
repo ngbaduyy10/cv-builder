@@ -54,6 +54,86 @@ include __DIR__ . '/../../layouts/client/header.php';
             </div>
         </div>
     </div>
+    <div class="feature">
+        <div class="container">
+            <h1 class="title">Get hired fast with a powerful resume</h1>
+            <div class="row mt-4 gx-0">
+                <div class="col-12 col-md-6 col-xl-4 px-5 py-4">
+                    <div class="row">
+                        <div class="col-2">
+                            <img src="https://static-00.iconduck.com/assets.00/cv-icon-863x1024-poos1wky.png" alt="" />
+                        </div>
+                        <div class="col-10">
+                            <div class="label">A better resume in minutes</div>
+                            <p class="desc">Tick every box and make sure your resume is never filtered out by the hiring software.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-xl-4 px-5 py-4">
+                    <div class="row">
+                        <div class="col-2">
+                            <img src="https://cdn-icons-png.flaticon.com/256/5723/5723525.png" alt="" />
+                        </div>
+                        <div class="col-10">
+                            <div class="label">ATS-friendly templates</div>
+                            <p class="desc">Replace your old resume in a few simple clicks. Our builder gives recruiters what they want.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-xl-4 px-5 py-4">
+                    <div class="row">
+                        <div class="col-2">
+                            <img src="https://www.svgrepo.com/show/186598/pen-fountain-pen.svg" alt="" />
+                        </div>
+                        <div class="col-10">
+                            <div class="label">Pre-written content</div>
+                            <p class="desc">Stop worrying about words. Save time by adding pre-approved, tested content from certified writers.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-xl-4 px-5 py-4">
+                    <div class="row">
+                        <div class="col-2">
+                            <img src="https://www.cdnlogo.com/logos/j/41/jira.svg" alt="" />
+                        </div>
+                        <div class="col-10">
+                            <div class="label">Easy with AI</div>
+                            <p class="desc">Quickly generate formal phrases and summaries. Sound professional, faster.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-xl-4 px-5 py-4">
+                    <div class="row">
+                        <div class="col-2">
+                            <img src="https://cdn-icons-png.flaticon.com/512/12690/12690844.png" alt="" />
+                        </div>
+                        <div class="col-10">
+                            <div class="label">Beat the competition</div>
+                            <p class="desc">Our tested resume templates are designed to make you more attractive to recruiters.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-xl-4 px-5 py-4">
+                    <div class="row">
+                        <div class="col-2">
+                            <img src="https://cdn-icons-png.freepik.com/512/9458/9458958.png" alt="" />
+                        </div>
+                        <div class="col-10">
+                            <div class="label">Get paid more</div>
+                            <p class="desc">A higher salary begins with a strong resume. Our salary analyzer tells you if your job offer is competitive.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="listing">
+        <div class="container">
+            <h1 class="title">Our Templates</h1>
+            <p class="desc">Choose from a variety of professionally designed CV templates tailored to suit every industry and career level.</p>
+            <div class="template-list mt-4 row g-4 align-items-stretch" id="template-list"></div>
+        </div>
+    </div>
 </main>
 
 <?php
@@ -66,6 +146,10 @@ include __DIR__ . '/../../layouts/client/footer.php';
 <!--Bootstrap-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
+<!--SweetAlert2-->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+
+<script src="assets/js/client/home.js"></script>
 
 </body>
 </html>

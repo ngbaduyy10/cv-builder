@@ -92,4 +92,12 @@ class Template extends Database {
         $stmt->bindParam(':id', $id);
         return $stmt->execute();
     }
+
+    public function get_ex_template() {
+        $sql = "SELECT * FROM template ORDER BY RAND() LIMIT 3";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    }
 }
