@@ -38,11 +38,9 @@
 
             <div class = "preview-blk">
                 <div class = "preview-blk-title">
-                    <h3>skills</h3>
+                    <h3>Skills</h3>
                 </div>
-                <div class = "skills-items preview-blk-list" id = "skills_dsp">
-                    <!-- skills list here -->
-                </div>
+                <div class = "skills-items preview-blk-list" id = "skills_dsp"></div>
             </div>
 
             <div class = "preview-blk">
@@ -65,21 +63,21 @@
 
             <div class = "preview-blk">
                 <div class = "preview-blk-title">
-                    <h3>experiences</h3>
+                    <h3>Experiences</h3>
                 </div>
                 <div class = "experiences-items preview-blk-list" id = "experiences_dsp"></div>
             </div>
 
             <div class = "preview-blk">
                 <div class = "preview-blk-title">
-                    <h3>projects</h3>
+                    <h3>Projects</h3>
                 </div>
                 <div class = "projects-items preview-blk-list" id = "projects_dsp"></div>
             </div>
 
             <div class = "preview-blk">
                 <div class = "preview-blk-title">
-                    <h3>educations</h3>
+                    <h3>Educations</h3>
                 </div>
                 <div class = "educations-items preview-blk-list" id = "educations_dsp"></div>
             </div>

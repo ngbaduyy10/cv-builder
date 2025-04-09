@@ -2,7 +2,7 @@
     aspect-ratio: 1 / 1.414;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     font-family: "Poppins", sans-serif;
-    padding: 4.2rem 3rem;
+    padding: 4rem 3rem;
 }
 
 .preview-cnt-t {
@@ -54,12 +54,10 @@
 
 .preview-blk {
     padding: 1rem 0;
-    margin-bottom: 0.8rem;
 }
 
 .preview-cnt-b .preview-cnt-l .preview-blk {
     padding-bottom: 0;
-    margin-bottom: 0;
 }
 
 .preview-cnt-r .preview-blk {
@@ -73,7 +71,7 @@
 }
 
 .preview-blk-title h3 {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.5px;

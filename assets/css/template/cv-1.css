@@ -2,7 +2,7 @@
     aspect-ratio: 1 / 1.414;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     font-family: "Poppins", sans-serif;
-    padding: 4.2rem 3rem;
+    padding: 4rem 3rem;
 }
 
 .preview-cnt hr {
@@ -36,7 +36,7 @@
 }
 
 .preview-blk-title h3 {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -59,12 +59,14 @@
 .achievements-items.preview-blk-list .preview-item span:first-child {
     font-weight: 600;
     display: block;
+    font-size: 1rem;
 }
 
 .educations-items.preview-blk-list .preview-item span:first-child,
 .experiences-items.preview-blk-list .preview-item span:first-child{
     margin-right: 1rem;
     font-weight: 600;
+    font-size: 1rem;
 }
 
 .educations-items.preview-blk-list .preview-item span:nth-child(4),
@@ -81,6 +83,7 @@
 .projects-items.preview-blk-list .preview-item span:first-child{
     font-weight: 600;
     display: block;
+    font-size: 1rem;
 }
 .projects-items.preview-blk-list .preview-item span:nth-child(2){
     display: block;
