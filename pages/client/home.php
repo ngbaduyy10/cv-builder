@@ -61,7 +61,7 @@ include __DIR__ . '/../../layouts/client/header.php';
                 <div class="col-12 col-md-6 col-xl-4 px-5 py-4">
                     <div class="row">
                         <div class="col-2">
-                            <img src="https://static-00.iconduck.com/assets.00/cv-icon-863x1024-poos1wky.png" alt="" />
+                            <img src="assets/image/feature_1.png" alt="" />
                         </div>
                         <div class="col-10">
                             <div class="label">A better resume in minutes</div>
@@ -72,7 +72,7 @@ include __DIR__ . '/../../layouts/client/header.php';
                 <div class="col-12 col-md-6 col-xl-4 px-5 py-4">
                     <div class="row">
                         <div class="col-2">
-                            <img src="https://cdn-icons-png.flaticon.com/256/5723/5723525.png" alt="" />
+                            <img src="assets/image/feature_2.png" alt="" />
                         </div>
                         <div class="col-10">
                             <div class="label">ATS-friendly templates</div>
@@ -83,7 +83,7 @@ include __DIR__ . '/../../layouts/client/header.php';
                 <div class="col-12 col-md-6 col-xl-4 px-5 py-4">
                     <div class="row">
                         <div class="col-2">
-                            <img src="https://www.svgrepo.com/show/186598/pen-fountain-pen.svg" alt="" />
+                            <img src="assets/image/feature_3.svg" alt="" />
                         </div>
                         <div class="col-10">
                             <div class="label">Pre-written content</div>
@@ -94,7 +94,7 @@ include __DIR__ . '/../../layouts/client/header.php';
                 <div class="col-12 col-md-6 col-xl-4 px-5 py-4">
                     <div class="row">
                         <div class="col-2">
-                            <img src="https://www.cdnlogo.com/logos/j/41/jira.svg" alt="" />
+                            <img src="assets/image/feature_4.svg" alt="" />
                         </div>
                         <div class="col-10">
                             <div class="label">Easy with AI</div>
@@ -105,7 +105,7 @@ include __DIR__ . '/../../layouts/client/header.php';
                 <div class="col-12 col-md-6 col-xl-4 px-5 py-4">
                     <div class="row">
                         <div class="col-2">
-                            <img src="https://cdn-icons-png.flaticon.com/512/12690/12690844.png" alt="" />
+                            <img src="assets/image/feature_5.png" alt="" />
                         </div>
                         <div class="col-10">
                             <div class="label">Beat the competition</div>
@@ -116,7 +116,7 @@ include __DIR__ . '/../../layouts/client/header.php';
                 <div class="col-12 col-md-6 col-xl-4 px-5 py-4">
                     <div class="row">
                         <div class="col-2">
-                            <img src="https://cdn-icons-png.freepik.com/512/9458/9458958.png" alt="" />
+                            <img src="assets/image/feature_6.png" alt="" />
                         </div>
                         <div class="col-10">
                             <div class="label">Get paid more</div>
