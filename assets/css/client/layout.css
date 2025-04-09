@@ -1,6 +1,6 @@
 .header {
     background: var(--background-color);
-    z-index: 1;
+    z-index: 999;
     font-family: "Sen", sans-serif;
 }
 .header.fixed {
