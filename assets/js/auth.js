@@ -1,6 +1,9 @@
 import { showToast } from "./toast.js";
 $(document).ready(function () {
     $("#register-form").submit(function (e) {
+        //set loading for button
+        $("#register-form button").html('<i class="fa-solid fa-spinner fa-spin"></i>');
+        $("#register-form button").attr("disabled", "disabled");
         e.preventDefault();
 
         const username = $("#username").val();
@@ -32,6 +35,9 @@ $(document).ready(function () {
 
     $("#login-form").submit(function (e) {
         e.preventDefault();
+        //set loading for button
+        $("#login-form button").html('<i class="fa-solid fa-spinner fa-spin"></i>');
+        $("#login-form button").attr("disabled", "disabled");
 
         const email = $("#email").val();
         const password = $("#password").val();

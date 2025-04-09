@@ -67,6 +67,10 @@ $(document).ready(function() {
     //submit form
     $('#template-form').on('submit', async function(e) {
         e.preventDefault();
+        //set loading for button
+        $('#template-form button').html('<i class="fa-solid fa-spinner fa-spin"></i>');
+        $('#template-form button').attr('disabled', 'disabled');
+
         let previewImage = $('#preview-image').attr('src');
         const file = $('#template-image')[0].files[0];
         if (file) {

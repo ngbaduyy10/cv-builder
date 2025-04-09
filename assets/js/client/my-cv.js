@@ -1,6 +1,6 @@
 $(document).ready(function () {
-    const get_cv = () => {
-        $.ajax({
+    const get_cv = async () => {
+        await $.ajax({
             url: "api/cv.api.php",
             method: "GET",
             dataType: "json",
@@ -136,11 +136,15 @@ $(document).ready(function () {
     });
 
     //change public status
-    $(document).on('click', '#button-public', function () {
+    $(document).on('click', '#button-public', async function () {
+        //set loading for button
+        $(this).html('<i class="fa-solid fa-spinner fa-spin"></i>');
+        $(this).attr('disabled', 'disabled');
+
         const cv_id = $(this).data('cv-id');
         const is_public = $(this).data('cv-public');
-        console.log(cv_id, is_public);
-        $.ajax({
+
+        await $.ajax({
             url: "api/cv.api.php",
             method: "POST",
             dataType: "json",
@@ -149,9 +153,9 @@ $(document).ready(function () {
                 id: cv_id,
                 status: !is_public,
             },
-            success: function (response) {
+            success: async function (response) {
                 if (response.success) {
-                    get_cv();
+                    await get_cv();
                     Swal.fire({
                         toast: true,
                         position: 'top-end',
