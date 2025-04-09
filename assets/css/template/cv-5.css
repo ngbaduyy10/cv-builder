@@ -66,6 +66,10 @@
     border-radius: 10px;
 }
 
+.preview-cnt-b .preview-cnt-r .preview-blk {
+    margin-bottom: 0.8rem;
+}
+
 .preview-blk-title {
     margin-bottom: 0.4rem;
 }
