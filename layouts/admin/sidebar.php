@@ -26,7 +26,11 @@ if (session_status() == PHP_SESSION_NONE) {
     </ul>
     <div class="px-3 py-2 profile">
         <div class="d-flex align-items-center gap-2">
-            <div class="image"><?php echo strtoupper($_SESSION['user']['username'][0]); ?></div>
+            <?php if (isset($_SESSION['user']['image'])): ?>
+                <img src="<?php echo $_SESSION['user']['image'] ?>" alt="Avatar" class="rounded-circle image" width="34" height="34">
+            <?php else: ?>
+                <img src="assets/image/default_avatar.png" alt="Avatar" class="rounded-circle image" width="34" height="34">
+            <?php endif; ?>
             <div class="name"><?php echo $_SESSION['user']['username'] ?></div>
         </div>
         <a href="?page=logout">

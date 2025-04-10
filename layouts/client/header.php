@@ -40,8 +40,8 @@ $page = $_GET['page'] ?? 'home';
             <?php if ($isLogin): ?>
                 <div class="btn-group dropstart d-none d-lg-block">
                     <button type="button" class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                        <?php if (isset($_SESSION['user']['avatar'])): ?>
-                            <img src="<?php echo $_SESSION['user']['avatar'] ?>" alt="Avatar" class="img-fluid" width="45" height="45">
+                        <?php if (isset($_SESSION['user']['image'])): ?>
+                            <img src="<?php echo $_SESSION['user']['image'] ?>" alt="Avatar" class="img-fluid" width="45" height="45">
                         <?php else: ?>
                             <img src="assets/image/default_avatar.png" alt="Avatar" class="img-fluid" width="45" height="45">
                         <?php endif; ?>

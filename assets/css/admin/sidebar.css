@@ -108,16 +108,8 @@ body {
 }
 
 .profile .image {
-    font-weight: 600;
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    font-size: 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    margin-right: 0.5rem;
     background-color: white;
-    color: var(--main-color);
 }
 
 .closed .profile .image {

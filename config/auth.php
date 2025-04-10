@@ -86,6 +86,7 @@ class Auth extends Database {
                 'username' => $user['username'],
                 'email' => $user['email'],
                 'role' => $user['role'],
+                'image' => $user['image'] ?? null,
             ];
             return [
                 'success' => true,
@@ -114,6 +115,7 @@ class Auth extends Database {
                     'username' => $username,
                     'email' => $email,
                     'role' => 'user',
+                    'image' => $image,
                 ];
                 return ['success' => true, 'message' => 'Registration successful.'];
             } else {
@@ -131,6 +133,7 @@ class Auth extends Database {
                     'username' => $username,
                     'email' => $email,
                     'role' => $user['role'],
+                    'image' => $image,
                 ];
                 return ['success' => true, 'message' => 'Login successful.'];
             } else {
