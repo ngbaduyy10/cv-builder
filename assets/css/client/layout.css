@@ -80,21 +80,13 @@
 }
 
 .header .dropdown-toggle {
-    text-align: center;
-    background-color: var(--main-color);
-    color: white;
-    font-weight: 600;
+    padding: 0;
     width: 45px;
     height: 45px;
     border-radius: 50%;
-    font-size: 2.4rem;
     border: none;
     margin-left: 4px;
-}
-
-.header .dropdown-toggle:hover {
-    background-color: var(--main-color);
-    color: white;
+    background-color: white;
 }
 
 .header .dropdown-menu {

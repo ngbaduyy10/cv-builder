@@ -23,11 +23,23 @@ if (!$cvId) {
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        img {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            width: 650px!important;
+        }
+
+        @media (max-width: 768px) {
+            img {
+                width: 100%!important;
+            }
+        }
+    </style>
 </head>
 <body>
 
-<main class="d-flex justify-content-center align-items-center my-5">
-    <img src="" alt="CV Image" class="img-fluid" id="cv-image" style="box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); width: 650px" />
+<main class="d-flex justify-content-center align-items-center my-5 mx-3">
+    <img src="" alt="CV Image" class="img-fluid" id="cv-image" />
 </main>
 
 <!--jQuery-->
