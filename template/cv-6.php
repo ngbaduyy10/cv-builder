@@ -33,7 +33,7 @@
 
             <div class = "preview-blk">
                 <div class = "preview-blk-title">
-                    <h3>Educations</h3>
+                    <h3>Education</h3>
                 </div>
                 <div class = "educations-items preview-blk-list" id = "educations_dsp"></div>
             </div>

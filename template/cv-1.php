@@ -42,7 +42,7 @@
 
     <div class = "preview-blk">
         <div class = "preview-blk-title text-center">
-            <h3>educations</h3>
+            <h3>education</h3>
         </div>
         <div class = "educations-items preview-blk-list" id = "educations_dsp"></div>
     </div>
