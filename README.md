@@ -41,8 +41,9 @@ These instructions will help you set up and run the project on your local machin
 
 3. **Database setup:**
 
-    - Create a database named `cv-builder` in your MySQL server.
+    - Create a database in your MySQL server.
     - Import the provided SQL file (`cv-builder.sql`) to set up the necessary tables.
+    - Config the database settings within a `database.php` file to get access to MySQL database.
 
 4. **Run the application:**
 
