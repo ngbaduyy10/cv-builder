@@ -24,6 +24,9 @@ $(document).ready(function () {
                 if (response.success) {
                     window.location.href = "index.php?page=home";
                 } else {
+                    //reset button
+                    $("#register-form button").html("Sign Up");
+                    $("#register-form button").removeAttr("disabled");
                     showToast("error", response.message);
                 }
             },
@@ -59,6 +62,9 @@ $(document).ready(function () {
                         window.location.href = "index.php?page=home";
                     }
                 } else {
+                    //reset button
+                    $("#login-form button").html("Sign In");
+                    $("#login-form button").removeAttr("disabled");
                     showToast("error", response.message);
                 }
             },

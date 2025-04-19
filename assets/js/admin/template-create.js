@@ -92,6 +92,10 @@ $(document).ready(function() {
             dataType: "json",
             data: data,
             success: function(response) {
+                //reset button
+                $('#template-form button').html(templateId ? 'Update' : 'Create');
+                $('#template-form button').removeAttr('disabled');
+
                 if (response.success) {
                     Swal.fire({
                         position: "center",
