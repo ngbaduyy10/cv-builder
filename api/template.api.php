@@ -24,6 +24,18 @@ function handleGetRequest () {
         } else if ($_GET['action'] === 'get_ex_template') {
             $result = (new Template())->get_ex_template();
             echo json_encode(['success' => true, 'data' => $result]);
+        } else if ($_GET['action'] === 'get_template_code') {
+            $template_id = $_GET['templateId'] ?? '1';
+            $template_file = __DIR__ . "/../template/cv-{$template_id}.php";
+
+            if (file_exists($template_file)) {
+                ob_start();
+                include $template_file;
+                $html = ob_get_clean();
+                echo $html;
+            } else {
+                echo json_encode(['success' => false, 'message' => 'Template file not found']);
+            }
         } else {
             echo json_encode(['success' => false, 'message' => 'Invalid action']);
         }

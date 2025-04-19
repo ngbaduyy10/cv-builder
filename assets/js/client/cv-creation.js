@@ -1,3 +1,113 @@
+$(document).ready(function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const cvId = urlParams.get('cv_id');
+    let cvData = null;
+
+    if (cvId) {
+        $.ajax({
+            url: 'api/cv.api.php',
+            method: 'GET',
+            dataType: 'json',
+            data: {
+                action: 'get_cv_by_id',
+                id: cvId
+            },
+            success: async function(response){
+                if (response.success) {
+                    cvData = {
+                        ...response.data,
+                        educations: JSON.parse(response.data.educations),
+                        experiences: JSON.parse(response.data.experiences),
+                        projects: JSON.parse(response.data.projects),
+                        skills: JSON.parse(response.data.skills),
+                        achievements: JSON.parse(response.data.achievements),
+                    };
+                    await getTemplateCode(response.data.template_id);
+                    insertCV(cvData);
+                    await templateSelectOptions(response.data.template_id);
+                }
+            }
+        });
+    }
+
+    const getTemplateCode = async (templateId) => {
+        await $.ajax({
+            url: "api/template.api.php",
+            method: "GET",
+            data: {
+                action: "get_template_code",
+                templateId
+            },
+            success: function (html) {
+                $('#preview-sc').html(html);
+
+                nameDsp = document.getElementById('fullname_dsp');
+                imageDsp = document.getElementById('image_dsp');
+                jobDsp = document.getElementById('job_dsp');
+                phonenoDsp = document.getElementById('phoneno_dsp');
+                emailDsp = document.getElementById('email_dsp');
+                addressDsp = document.getElementById('address_dsp');
+                summaryDsp = document.getElementById('summary_dsp');
+                projectsDsp = document.getElementById('projects_dsp');
+                achievementsDsp = document.getElementById('achievements_dsp');
+                skillsDsp = document.getElementById('skills_dsp');
+                educationsDsp = document.getElementById('educations_dsp');
+                experiencesDsp = document.getElementById('experiences_dsp');
+
+                displayCV(cvData);
+
+                const cssLink = document.getElementById('template-style');
+                if (cssLink) {
+                    cssLink.href = `assets/css/template/cv-${templateId}.css`;
+                } else {
+                    const link = document.createElement('link');
+                    link.id = 'template-style';
+                    link.rel = 'stylesheet';
+                    link.href = `assets/css/template/cv-${templateId}.css`;
+                    document.head.appendChild(link);
+                }
+            },
+            error: function (xhr, status, error) {
+                console.error("Error loading preview:", error);
+            }
+        });
+    }
+
+    const templateSelectOptions = (templateId) => {
+        $.ajax({
+            url: "api/template.api.php",
+            method: "GET",
+            dataType: "json",
+            data: {
+                action: "get_templates",
+                sort: null,
+                keyword: null,
+                type: null
+            },
+            success: function (response) {
+                if (response.success) {
+                    response.data.forEach((template) => {
+                        const selected = templateId === template.id ? 'selected' : '';
+                        $('#template-select').append(`
+                              <option value="${template.id}" ${selected}>${template.name}</option>
+                        `);
+                    });
+                }
+            },
+            error: function (xhr, status, error) {
+                console.error("Error loading templates:", error);
+            }
+        });
+    }
+
+    $('#template-select').on('change', async function () {
+        const selectedId = $(this).val();
+        await getTemplateCode(selectedId);
+        selectedTemplateId = selectedId;
+    });
+});
+
+let selectedTemplateId = null;
 const mainForm = document.getElementById('cv-form');
 
 // user inputs elements
@@ -15,18 +125,7 @@ let cvnameElem = mainForm.cvname,
 let summaryEditorElem = document.querySelector("#summary-content");
 
 // display elements
-let nameDsp = document.getElementById('fullname_dsp'),
-    imageDsp = document.getElementById('image_dsp'),
-    jobDsp = document.getElementById('job_dsp'),
-    phonenoDsp = document.getElementById('phoneno_dsp'),
-    emailDsp = document.getElementById('email_dsp'),
-    addressDsp = document.getElementById('address_dsp'),
-    summaryDsp = document.getElementById('summary_dsp'),
-    projectsDsp = document.getElementById('projects_dsp'),
-    achievementsDsp = document.getElementById('achievements_dsp'),
-    skillsDsp = document.getElementById('skills_dsp'),
-    educationsDsp = document.getElementById('educations_dsp'),
-    experiencesDsp = document.getElementById('experiences_dsp');
+let nameDsp, imageDsp, jobDsp, phonenoDsp, emailDsp, addressDsp, summaryDsp, projectsDsp, achievementsDsp, skillsDsp, educationsDsp, experiencesDsp;
 
 function formatDate(dateString) {
     const date = new Date(dateString);
@@ -119,7 +218,7 @@ const showListData = (listData, listContainer) => {
 
 const displayCV = (userData) => {
     nameDsp.innerHTML = userData.firstname + " " + userData.lastname;
-    if (userData.image) {
+    if (userData.image && imageDsp) {
         imageDsp.src = userData.image;
     }
     jobDsp.innerHTML = userData.job;
@@ -157,12 +256,7 @@ const revertCV = () => {
         }
     }).then((result) => {
         if (result.isConfirmed) {
-            const urlParams = new URLSearchParams(window.location.search);
-            const cvId = urlParams.get('cv_id');
-
-            if (cvId) {
-                fetchCV(cvId);
-            }
+            window.location.reload();
         }
     });
 }
@@ -252,44 +346,7 @@ const insertCV = (cvData) => {
     phonenoElem.value = cvData.phoneno;
     summaryElem.value = cvData.summary;
     summaryEditorElem.innerHTML = cvData.summary;
-
-    displayCV(cvData);
 }
-
-const fetchCV = (cvId) => {
-    $.ajax({
-        url: 'api/cv.api.php',
-        method: 'GET',
-        dataType: 'json',
-        data: {
-            action: 'get_cv_by_id',
-            id: cvId
-        },
-        success: function(response){
-            if (response.success) {
-                const cvData = {
-                    ...response.data,
-                    educations: JSON.parse(response.data.educations),
-                    experiences: JSON.parse(response.data.experiences),
-                    projects: JSON.parse(response.data.projects),
-                    skills: JSON.parse(response.data.skills),
-                    achievements: JSON.parse(response.data.achievements),
-                };
-
-                insertCV(cvData);
-            }
-        }
-    });
-}
-
-$(document).ready(function () {
-    const urlParams = new URLSearchParams(window.location.search);
-    const cvId = urlParams.get('cv_id');
-
-    if (cvId) {
-        fetchCV(cvId);
-    }
-});
 
 const createCV = async (userData) => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -352,7 +409,6 @@ const createCV = async (userData) => {
 const updateCV = async (userData) => {
     const urlParams = new URLSearchParams(window.location.search);
     const cvId = urlParams.get('cv_id');
-    const templateId = urlParams.get('template_id');
 
     if (imageElem.files[0]) {
         userData.image = await uploadToCloudinary(imageElem.files[0]);
@@ -369,7 +425,7 @@ const updateCV = async (userData) => {
         data: {
             action: 'update_cv',
             id: cvId,
-            template_id: templateId,
+            template_id: selectedTemplateId,
             cv_image: cvImage,
             ...userData,
             educations: JSON.stringify(userData.educations),
@@ -390,6 +446,9 @@ const updateCV = async (userData) => {
                         popup: 'custom-swal-size',
                     }
                 });
+                setTimeout(() => {
+                    window.location.href = 'index.php?page=my-cv';
+                }, 1500);
             } else {
                 Swal.fire({
                     toast: true,

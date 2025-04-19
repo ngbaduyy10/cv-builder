@@ -26,7 +26,7 @@ $(document).ready(function () {
                                 <div class="col-12 col-md-6 col-lg-4 col-xl-3">
                                     <div class="cv-item p-4 h-100 d-flex flex-column">
                                         <img src="${cv.cv_image}" alt="${cv.cvname}" />
-                                        <a href="?page=cv-creation&template_id=${cv.template_id}&cv_id=${cv.id}" class="button button-edit">
+                                        <a href="?page=cv-creation&cv_id=${cv.id}" class="button button-edit">
                                             <i class='bx bxs-edit-alt'></i>
                                         </a>
                                         <button class="button button-delete" id="button-delete" data-cv-id="${cv.id}">

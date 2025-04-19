@@ -6,8 +6,6 @@ if (!isset($_SESSION['user'])) {
     header('Location: index.php?page=login');
     exit();
 }
-$template_id = $_GET['template_id'];
-$cv = __DIR__ . "/../../template/cv-{$template_id}.php";
 
 $cv_id = $_GET['cv_id'] ?? null;
 ?>
@@ -26,7 +24,6 @@ $cv_id = $_GET['cv_id'] ?? null;
     />
     <link rel="stylesheet" href="assets/css/client/layout.css" />
     <link rel="stylesheet" href="assets/css/client/cv-creation.css" />
-    <link rel="stylesheet" href="assets/css/template/cv-<?php echo $template_id; ?>.css" />
     <title>CV Creation</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -43,18 +40,26 @@ include __DIR__ . '/../../layouts/client/header.php';
 
 <main class="cv-creation">
     <div class="container row gx-4">
-        <div class="col-12 d-flex justify-content-end gap-3">
+        <div class="col-12 d-flex align-items-center <?php echo $cv_id ? 'justify-content-between' : 'justify-content-start'; ?>">
             <?php if ($cv_id) { ?>
-                <button class="button button-save d-flex align-items-center gap-2" onclick="revertCV()"  id="revert-cv-btn">
-                    <i class='bx bx-redo'></i> Revert
-                </button>
+                <div class="d-flex align-items-center gap-3">
+                    <label for="template-select" class="template-select">Type</label>
+                    <select class="form-select" id="template-select" required></select>
+                </div>
             <?php } ?>
-            <button class="button button-save d-flex align-items-center justify-content-center gap-2" onclick="saveCV()"  id="save-cv-btn">
-                <i class='bx bxs-save'></i> Save
-            </button>
-            <button class="button button-print d-flex align-items-center gap-2" onclick="printCV()">
-                <i class='bx bxs-printer'></i> Print
-            </button>
+            <div class="d-flex align-items-center justify-content-end gap-3">
+                <?php if ($cv_id) { ?>
+                    <button class="button button-revert d-flex align-items-center gap-2" onclick="revertCV()"  id="revert-cv-btn">
+                        <i class='bx bx-redo'></i> Revert
+                    </button>
+                <?php } ?>
+                <button class="button button-save d-flex align-items-center justify-content-center gap-2" onclick="saveCV()"  id="save-cv-btn">
+                    <i class='bx bxs-save'></i> Save
+                </button>
+                <button class="button button-print d-flex align-items-center gap-2" onclick="printCV()">
+                    <i class='bx bxs-printer'></i> Print
+                </button>
+            </div>
         </div>
         <div class="col-12 d-flex gap-4 flex-column flex-xl-row align-items-center align-items-xl-start">
             <section id="about-sc" class="custom-width">
@@ -318,9 +323,7 @@ include __DIR__ . '/../../layouts/client/header.php';
                 </form>
             </section>
 
-            <section id = "preview-sc" class = "print_area custom-width">
-                <?php include $cv; ?>
-            </section>
+            <section id = "preview-sc" class = "print_area custom-width"></section>
         </div>
     </div>
 </main>
