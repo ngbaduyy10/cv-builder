@@ -1,7 +1,53 @@
 $(document).ready(function() {
     const urlParams = new URLSearchParams(window.location.search);
     const cvId = urlParams.get('cv_id');
+    const templateId = urlParams.get('template_id');
     let cvData = null;
+
+    const getTemplateCode = async (templateId) => {
+        await $.ajax({
+            url: "api/template.api.php",
+            method: "GET",
+            data: {
+                action: "get_template_code",
+                templateId
+            },
+            success: function (html) {
+                $('#preview-sc').html(html);
+
+                nameDsp = document.getElementById('fullname_dsp');
+                imageDsp = document.getElementById('image_dsp');
+                jobDsp = document.getElementById('job_dsp');
+                phonenoDsp = document.getElementById('phoneno_dsp');
+                emailDsp = document.getElementById('email_dsp');
+                addressDsp = document.getElementById('address_dsp');
+                summaryDsp = document.getElementById('summary_dsp');
+                projectsDsp = document.getElementById('projects_dsp');
+                achievementsDsp = document.getElementById('achievements_dsp');
+                skillsDsp = document.getElementById('skills_dsp');
+                educationsDsp = document.getElementById('educations_dsp');
+                experiencesDsp = document.getElementById('experiences_dsp');
+
+                if (cvData) {
+                    displayCV(cvData);
+                }
+
+                const cssLink = document.getElementById('template-style');
+                if (cssLink) {
+                    cssLink.href = `assets/css/template/cv-${templateId}.css`;
+                } else {
+                    const link = document.createElement('link');
+                    link.id = 'template-style';
+                    link.rel = 'stylesheet';
+                    link.href = `assets/css/template/cv-${templateId}.css`;
+                    document.head.appendChild(link);
+                }
+            },
+            error: function (xhr, status, error) {
+                console.error("Error loading preview:", error);
+            }
+        });
+    }
 
     if (cvId) {
         $.ajax({
@@ -28,49 +74,8 @@ $(document).ready(function() {
                 }
             }
         });
-    }
-
-    const getTemplateCode = async (templateId) => {
-        await $.ajax({
-            url: "api/template.api.php",
-            method: "GET",
-            data: {
-                action: "get_template_code",
-                templateId
-            },
-            success: function (html) {
-                $('#preview-sc').html(html);
-
-                nameDsp = document.getElementById('fullname_dsp');
-                imageDsp = document.getElementById('image_dsp');
-                jobDsp = document.getElementById('job_dsp');
-                phonenoDsp = document.getElementById('phoneno_dsp');
-                emailDsp = document.getElementById('email_dsp');
-                addressDsp = document.getElementById('address_dsp');
-                summaryDsp = document.getElementById('summary_dsp');
-                projectsDsp = document.getElementById('projects_dsp');
-                achievementsDsp = document.getElementById('achievements_dsp');
-                skillsDsp = document.getElementById('skills_dsp');
-                educationsDsp = document.getElementById('educations_dsp');
-                experiencesDsp = document.getElementById('experiences_dsp');
-
-                displayCV(cvData);
-
-                const cssLink = document.getElementById('template-style');
-                if (cssLink) {
-                    cssLink.href = `assets/css/template/cv-${templateId}.css`;
-                } else {
-                    const link = document.createElement('link');
-                    link.id = 'template-style';
-                    link.rel = 'stylesheet';
-                    link.href = `assets/css/template/cv-${templateId}.css`;
-                    document.head.appendChild(link);
-                }
-            },
-            error: function (xhr, status, error) {
-                console.error("Error loading preview:", error);
-            }
-        });
+    } else if (templateId) {
+        getTemplateCode(templateId);
     }
 
     const templateSelectOptions = (templateId) => {

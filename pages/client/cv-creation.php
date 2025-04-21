@@ -40,7 +40,7 @@ include __DIR__ . '/../../layouts/client/header.php';
 
 <main class="cv-creation">
     <div class="container row gx-4">
-        <div class="col-12 d-flex align-items-center <?php echo $cv_id ? 'justify-content-between' : 'justify-content-start'; ?>">
+        <div class="col-12 d-flex align-items-center <?php echo $cv_id ? 'justify-content-between' : 'justify-content-end'; ?>">
             <?php if ($cv_id) { ?>
                 <div class="d-flex align-items-center gap-3">
                     <label for="template-select" class="template-select">Type</label>
